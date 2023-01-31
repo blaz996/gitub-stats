@@ -1,0 +1,7 @@
+@use '../../../../global/styles/index' as *;
+
+.profile-charts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(20);
+}

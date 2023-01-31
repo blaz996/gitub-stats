@@ -1,0 +1,18 @@
+@use '../../../global/styles/index' as *;
+.input {
+  //Remove later;
+
+  padding: rem(10) rem(5);
+  height: auto;
+
+  border: 1px solid var(--clr-grey-1);
+  border-radius: 4px;
+  font-size: var(--font-300);
+  outline: none;
+
+  width: 100%;
+
+  &--error {
+    border-color: var(--clr-red);
+  }
+}

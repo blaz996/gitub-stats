@@ -1,0 +1,64 @@
+@use '../../../global/styles/index' as *;
+.atribute-card {
+  display: flex;
+  align-items: center;
+  height: rem(80);
+  flex: 1;
+  border-radius: 5px;
+  color: white;
+  background-color: black;
+
+  padding: 0 rem(15);
+
+  .atribute {
+    &__icon-wrapper {
+      margin-right: auto;
+      position: relative;
+
+      width: rem(60);
+      height: rem(60);
+      border-radius: 50%;
+      background-color: red;
+
+      display: flex;
+      margin-right: auto;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+
+      @include breakpoint-down(medium) {
+        max-width: rem(50);
+        max-height: rem(50);
+      }
+
+      svg {
+        font-size: rem(40);
+        width: 80%;
+
+        fill: white;
+        color: white;
+        position: relative;
+        opacity: 1;
+        z-index: 2;
+
+        @include breakpoint-down(medium) {
+          font-size: rem(30);
+        }
+      }
+    }
+    &__value {
+      font-weight: 700;
+
+      &-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: rem(10);
+        font-size: var(--font-400);
+        @include breakpoint-down(medium) {
+          font-size: var(--font-300);
+        }
+      }
+    }
+  }
+}

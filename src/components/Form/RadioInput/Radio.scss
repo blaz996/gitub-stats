@@ -1,0 +1,41 @@
+@use '../../../global/styles/index' as *;
+
+.radio {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: rem(100);
+  }
+  width: rem(20);
+  height: rem(20);
+  outline: 3px solid var(--clr-blue);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  input[type='radio'] {
+    width: 0;
+  }
+
+  &__label {
+    position: relative;
+  }
+
+  &__check {
+    width: rem(12);
+    height: rem(12);
+    background-color: var(--clr-blue);
+    border-radius: 50%;
+    display: none;
+  }
+
+  input[type='radio']:checked + .radio__check {
+    display: inline-block;
+  }
+
+  input[type='radio']:checked + .radio::after {
+    background-color: red;
+  }
+}

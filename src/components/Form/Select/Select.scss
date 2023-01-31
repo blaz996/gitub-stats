@@ -1,0 +1,48 @@
+@use '../../../global/styles/index' as *;
+.select {
+  appearance: none;
+  padding: rem(15) rem(8);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-300);
+  color: var(--clr-grey-1);
+  width: 100%;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: rem(5);
+
+    width: rem(180);
+  }
+
+  &__wrapper {
+    width: rem(180);
+    position: relative;
+  }
+
+  &__label {
+    text-transform: capitalize;
+    color: var(--clr-grey-1);
+    font-size: var(--font-400);
+  }
+
+  &__toggle {
+    padding: rem(13) rem(10);
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: rem(1);
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: var(--clr-blue);
+    color: white;
+    pointer-events: none;
+
+    svg {
+      width: rem(20);
+    }
+  }
+}

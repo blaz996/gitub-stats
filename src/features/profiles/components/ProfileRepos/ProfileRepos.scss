@@ -1,0 +1,37 @@
+@use '../../../../global/styles/index' as *;
+.profile-repos {
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+    &-title {
+      font-size: var(--font-800);
+      color: var(--clr-grey-1);
+      font-weight: 200;
+      text-transform: capitalize;
+    }
+    &-filter {
+      font-size: rem(30);
+
+      display: flex;
+      align-items: center;
+
+      .heading-filter__btn {
+        width: rem(40);
+        cursor: pointer;
+      }
+
+      span {
+        font-size: var(--font-400);
+        cursor: pointer;
+      }
+
+      svg {
+        width: rem(16);
+      }
+    }
+  }
+
+  .modal {
+    background-color: #ccc;
+  }
+}

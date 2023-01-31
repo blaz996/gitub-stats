@@ -1,0 +1,15 @@
+@use '../../global/styles/index' as *;
+
+.form__title {
+  font-size: var(--font-700);
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: rem(15);
+  text-transform: capitalize;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: rem(15);
+}

@@ -1,0 +1,21 @@
+@use '../../../global/styles/index' as *;
+.filter-list__item {
+  padding: rem(15);
+  background-color: #ccc;
+  cursor: pointer;
+  min-width: rem(200);
+  text-align: center;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--clr-grey-1);
+  }
+
+  &:hover {
+    background-color: var(--clr-grey-2);
+  }
+
+  &--disabled {
+    background-color: var(--clr-blue);
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,16 @@
+@use '../../global/styles/index' as *;
+.detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: rem(10);
+
+  svg {
+    width: rem(30);
+  }
+
+  &__text {
+    font-size: var(--font-300);
+    text-align: center;
+  }
+}

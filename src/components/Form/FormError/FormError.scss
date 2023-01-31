@@ -1,0 +1,16 @@
+@use '../../../global/styles/index' as *;
+.form-error {
+  background-color: var(--clr-red);
+  padding: rem(10) rem(15);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(7);
+  border-radius: 5px;
+  margin-bottom: rem(15);
+
+  &__message {
+    font-size: var(--font-300);
+  }
+}

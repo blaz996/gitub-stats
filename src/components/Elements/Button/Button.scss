@@ -1,0 +1,41 @@
+@use '../../../global/styles/index' as *;
+.btn {
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-size: var(--font-300);
+
+  &--primary {
+    background-color: var(--clr-blue);
+    color: white;
+    transition: all 0.2s;
+    font-weight: 500;
+
+    &:hover {
+      background-color: var(--clr-blue-light);
+    }
+  }
+
+  &--collapse {
+    box-shadow: var(--shadow-light);
+    width: 100%;
+
+    svg {
+      font-size: var(--font-600);
+    }
+  }
+
+  &--sm {
+    padding: rem(8) rem(14);
+  }
+
+  &--md {
+    padding: rem(8) rem(18);
+  }
+
+  &--lg {
+    padding: rem(10) rem(22);
+  }
+}

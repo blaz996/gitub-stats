@@ -1,0 +1,228 @@
+@use '../../../../global/styles/index' as *;
+
+.trending-repo {
+  padding: rem(10) rem(40);
+
+  width: 100%;
+  height: rem(150);
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: white;
+  box-shadow: var(--shadow-light);
+
+  border-radius: 6px;
+
+  animation: fadeIn, 5s linear;
+
+  @media (max-width: 50em) {
+    grid-template-columns: rem(80) 1fr;
+  }
+
+  @include breakpoint-down(small) {
+    padding: rem(10) rem(10);
+    align-items: center;
+  }
+
+  @include breakpoint-down(mobile) {
+    grid-template-columns: rem(50) 1fr;
+    word-break: break-word;
+  }
+
+  .profile-head {
+    flex-direction: row;
+    gap: rem(10);
+    height: 100%;
+
+    @include breakpoint-down(small) {
+      justify-content: center;
+      gap: 0;
+      flex-direction: column;
+    }
+
+    &__avatar {
+      width: rem(75);
+
+      @include breakpoint-down(small) {
+        gap: 0;
+        width: rem(50);
+      }
+    }
+
+    &__username {
+      font-size: var(--font-400);
+      font-weight: 400;
+    }
+    &__name {
+      margin: 0;
+    }
+  }
+
+  &__ranking {
+    position: absolute;
+    left: rem(-90);
+    width: rem(55);
+    height: rem(55);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    outline: 4px solid var(--clr-blue);
+    color: var(--clr-blue);
+    font-weight: 500;
+    font-size: var(--font-500);
+
+    @include breakpoint-down(medium) {
+      top: -10px;
+      left: -10px;
+      outline: 2px solid var(--clr-blue);
+
+      background-color: white;
+
+      padding: 0 rem(15);
+    }
+    @include breakpoint-down(small) {
+      width: rem(30);
+      height: rem(30);
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: rem(10);
+
+    @media (max-width: 50em) {
+      position: relative;
+      left: auto;
+      transform: none;
+    }
+  }
+
+  &__name {
+    font-size: var(--font-600);
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    color: var(--clr-grey-1);
+
+    @include breakpoint-down(mobile) {
+      font-size: rem(14);
+      text-align: center;
+    }
+
+    &:hover {
+      color: var(--clr-blue);
+    }
+  }
+
+  &__date {
+    color: var(--clr-grey-1);
+    font-size: var(--font-300);
+
+    @include breakpoint-down(mobile) {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      font-size: rem(12);
+    }
+
+    &--mobile {
+      display: none;
+      @include breakpoint-down(small) {
+        display: flex;
+        gap: rem(5);
+        align-items: center;
+        border-radius: 6x;
+        justify-content: center;
+        position: absolute;
+        top: -38px;
+        right: 200px;
+        background-color: white;
+        height: rem(40);
+        min-width: rem(150);
+        padding: 0 rem(10);
+      }
+      p {
+        color: var(--clr-grey-1);
+        font-size: var(--font-300);
+      }
+    }
+  }
+
+  &__stats {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: rem(15);
+
+    @media (max-width: 50em) {
+      position: absolute;
+      right: 20px;
+      top: -35px;
+    }
+
+    @include breakpoint-down(mobile) {
+      top: 100px;
+      right: 6px;
+      gap: 0;
+    }
+  }
+
+  &__stat {
+    display: flex;
+    align-items: center;
+    gap: rem(10);
+
+    &-value {
+      @include breakpoint-down(mobile) {
+        font-size: rem(13);
+      }
+    }
+
+    @media (max-width: 50em) {
+      background: white;
+      justify-content: center;
+
+      border-bottom: none;
+      padding: 0 rem(10);
+      height: rem(40);
+    }
+
+    @include breakpoint-down(mobile) {
+      background-color: transparent;
+      padding: 0 rem(4);
+    }
+  }
+
+  &__icon {
+    font-size: var(--font-600);
+
+    &-star {
+      color: var(--clr-yellow-light);
+    }
+
+    &-fork {
+      color: var(--clr-blue-light);
+    }
+
+    &-trophy {
+      position: absolute;
+      left: -17%;
+      font-size: var(--font-l);
+      color: var(--clr-yellow);
+    }
+
+    &-calendar {
+      color: var(--clr-blue);
+    }
+  }
+}

@@ -1,0 +1,6 @@
+@use '../../../global/styles/index' as *;
+.chart-tooltip {
+  background-color: white;
+  padding: rem(5) rem(10);
+  color: var(--clr-grey-1);
+}

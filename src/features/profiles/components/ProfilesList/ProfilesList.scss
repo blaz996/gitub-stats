@@ -1,0 +1,16 @@
+@use '../../../../global/styles/index' as *;
+.profiles-list {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(rem(200), rem(250)));
+  gap: rem(60) rem(40);
+  justify-content: center;
+  margin-top: rem(80);
+  margin-bottom: rem(20);
+
+  @include breakpoint-down('small') {
+    grid-template-columns: repeat(auto-fit, minmax(rem(100), rem(120)));
+    gap: rem(40) rem(20);
+    justify-content: space-around;
+  }
+}

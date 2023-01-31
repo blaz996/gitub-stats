@@ -1,0 +1,33 @@
+@use '../../../global//styles/index' as *;
+.spinner {
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+
+  &--sm {
+    border: 5px solid var(--clr-grey-4);
+    border-top-color: var(--clr-blue);
+
+    width: rem(25);
+    height: rem(25);
+  }
+
+  &--md {
+    border: 10px solid var(--clr-grey-4);
+    border-top-color: var(--clr-blue);
+    width: rem(50);
+    height: rem(50);
+  }
+
+  &--lg {
+    border: 12px solid var(--clr-grey-4);
+    border-top-color: var(--clr-blue);
+
+    width: rem(75);
+    height: rem(75);
+  }
+
+  animation: loading 1s linear infinite;
+}

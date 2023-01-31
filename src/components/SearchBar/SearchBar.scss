@@ -1,0 +1,43 @@
+@use '../../global/styles/index' as *;
+
+.search-bar {
+  width: min(70vw, rem(500));
+  position: relative;
+  margin-inline: auto;
+  margin-top: rem(40);
+
+  &--input {
+    padding-inline: rem(15);
+    border-radius: 20px;
+    height: rem(50);
+  }
+
+  form {
+    position: relative;
+  }
+
+  &__button {
+    outline: none;
+    position: absolute;
+    cursor: pointer;
+    top: rem(10);
+    right: 2%;
+    border-radius: 50%;
+    display: flex;
+    width: rem(30);
+    font-size: rem(20);
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+    height: rem(30);
+    border: 0;
+    background-color: var(--clr-blue-light);
+    color: white;
+  }
+
+  .spinner {
+    right: 2%;
+    left: auto;
+    top: 25%;
+  }
+}

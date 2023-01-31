@@ -1,0 +1,13 @@
+@use '../../../../global/styles/index' as *;
+.trending-repos {
+  max-width: rem(930);
+  margin-inline: auto;
+  gap: rem(40);
+  display: flex;
+
+  flex-direction: column;
+
+  @include breakpoint-down(medium) {
+    gap: rem(60);
+  }
+}

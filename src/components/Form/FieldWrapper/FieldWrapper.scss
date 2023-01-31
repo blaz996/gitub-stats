@@ -1,0 +1,61 @@
+@use '../../../global/styles/index' as *;
+
+.field-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  &__error {
+    margin-top: rem(5);
+    display: flex;
+
+    align-items: center;
+    gap: rem(5);
+
+    color: var(--clr-red);
+  }
+
+  &__label {
+    text-transform: capitalize;
+    margin-bottom: rem(5);
+    margin-left: rem(5);
+    font-size: var(--font-300);
+    color: var(--clr-grey-1);
+
+    transition: all 0.3s;
+  }
+
+  &__error {
+    display: flex;
+    align-items: center;
+
+    .error {
+      &__message {
+        font-size: var(--font-300);
+      }
+      &__icon {
+        font-size: rem(20);
+      }
+    }
+  }
+}
+
+input {
+  & ~ p {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(30px);
+  }
+
+  &:focus::placeholder {
+    color: transparent;
+  }
+
+  &:not(:placeholder-shown) ~ p {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &:focus ~ p {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

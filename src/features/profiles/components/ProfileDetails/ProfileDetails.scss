@@ -1,0 +1,69 @@
+@use '../../../../global/styles/index' as *;
+.profile-details {
+  display: grid;
+  max-width: rem(1100);
+  margin-inline: auto;
+
+  grid-template-areas:
+    'info atributes  atributes'
+    'info following   following';
+
+  grid-template-columns: 1fr 2fr;
+
+  gap: rem(40);
+
+  @include breakpoint-down(medium) {
+    grid-template-areas:
+      'atributes atributes'
+      'info info';
+    grid-template-columns: 1fr;
+    max-width: rem(900);
+  }
+  @include breakpoint-down(small) {
+    grid-template-areas:
+      'atributes'
+      'info'
+      'following';
+  }
+}
+
+.profile-atributes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: rem(20);
+
+  width: 100%;
+
+  transition: all 0.4s;
+
+  grid-area: atributes;
+
+  @include breakpoint-down(medium) {
+    gap: rem(15);
+  }
+
+  @include breakpoint-down(small) {
+    grid-template-columns: repeat(auto-fit, minmax(rem(200), 1fr));
+  }
+
+  @include breakpoint-down(mobile) {
+    grid-template-columns: 1fr;
+  }
+
+  &__col {
+    gap: rem(20);
+
+    display: grid;
+
+    @include breakpoint-down(medium) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include breakpoint-down(small) {
+      grid-template-columns: repeat(auto-fit, minmax(rem(120), 1fr));
+    }
+    @include breakpoint-down(mobile) {
+      grid-template-columns: repeat(auto-fit, minmax(rem(140), 1fr));
+    }
+  }
+}

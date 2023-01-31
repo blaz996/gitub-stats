@@ -1,0 +1,12 @@
+@use '../../../global/styles/index';
+
+.dropdown {
+  &__content {
+    margin-top: -100%;
+    transition: all 0.75s;
+
+    &--active {
+      margin-top: 0;
+    }
+  }
+}
