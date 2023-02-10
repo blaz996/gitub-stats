@@ -1,4 +1,10 @@
 @use '../../../../global/styles/index' as *;
+
+.trending {
+  background-color: var(--clr-grey-5);
+  min-height: 88vh;
+}
+
 .trending-repos {
   max-width: rem(930);
   margin-inline: auto;

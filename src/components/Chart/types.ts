@@ -2,6 +2,7 @@ export type ChartWrapperProps = {
   wrapperWidth?: number;
   wrapperHeight?: number;
   chartTitle?: string;
+  className?: string;
   children: any;
 };
 

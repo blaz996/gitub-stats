@@ -1,0 +1,33 @@
+@use '../../../../global/styles/index' as *;
+.auth-form {
+  width: min(rem(380), 80vw);
+  padding: rem(15) rem(50);
+  box-shadow: var(--shadow-light);
+  margin-inline: auto;
+  margin-top: rem(30);
+
+  @include breakpoint-down(mobile) {
+    padding-inline: rem(20);
+  }
+
+  .btn {
+    margin-top: rem(40);
+    margin-bottom: rem(20);
+  }
+
+  .input {
+  }
+}
+
+.login-form {
+  &__link {
+    text-align: center;
+    a {
+      display: block;
+    }
+  }
+}
+
+.register-form {
+  margin-top: rem(60);
+}

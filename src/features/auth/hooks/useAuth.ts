@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { User } from 'firebase/auth';
+import React, { useState, useEffect } from 'react';
 import { handleAuthStateChange } from '@/lib/firebase/auth';
+import { User } from 'firebase/auth';
 
 export const useAuth = () => {
-  const ls = JSON.parse(localStorage!.getItem('currentUser') || '');
-  const [currentUser, setCurrentUser] = useState<User | null>(ls || null);
+  const [currentUser, setCurrentUser] = useState<User | null>(
+    JSON.parse(localStorage!.getItem('currentUser') || 'null')
+  );
+
   useEffect(() => {
     const unsubscribe = handleAuthStateChange((user) => {
       if (user) {
@@ -15,7 +17,7 @@ export const useAuth = () => {
     });
 
     return unsubscribe;
-  });
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('currentUser', JSON.stringify(currentUser));

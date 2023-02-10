@@ -1,0 +1,134 @@
+@use '../../../global/styles/index' as *;
+.homepage {
+  background-color: var(--clr-grey-5);
+  min-height: 89.9vh;
+
+  &__hero {
+    position: relative;
+    margin-bottom: rem(40);
+
+    background-color: var(--clr-blue-light);
+    height: rem(380);
+
+    width: 100%;
+    clip-path: polygon(0% 0%, 0 100%, 100% 70%, 100% 0);
+    display: flex;
+    align-items: center;
+    padding-inline: rem(40);
+
+    @include breakpoint-down(small) {
+      padding-inline: rem(20);
+    }
+
+    gap: rem(15);
+
+    &-signup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: rem(10);
+      position: absolute;
+      right: 5%;
+      top: 7%;
+
+      h4 {
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-size: var(--font-500);
+        color: white;
+        font-weight: 400;
+      }
+    }
+
+    &-icon {
+      font-size: rem(160);
+
+      color: white;
+      @include breakpoint-down(medium) {
+        font-size: rem(120);
+      }
+      @include breakpoint-down(small) {
+        position: absolute;
+        top: 0;
+        font-size: rem(100);
+      }
+      @include breakpoint-down(small) {
+        position: absolute;
+        top: 5%;
+        font-size: rem(60);
+      }
+    }
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-title {
+      color: white;
+      font-size: var(--font-l);
+      letter-spacing: 1.6px;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: rem(10);
+    }
+
+    &-subtext {
+      font-weight: 500;
+      letter-spacing: 1.3px;
+      font-size: var(--font-700);
+      color: white;
+      text-transform: uppercase;
+
+      text-align: center;
+      @include breakpoint-down(mobile) {
+        display: none;
+      }
+    }
+
+    .btn {
+      padding: rem(15);
+      box-shadow: var(--shadow-light);
+      width: rem(140);
+      background-color: white;
+      color: var(--clr-blue);
+      font-size: var(--font-400);
+      font-weight: 600;
+
+      @include breakpoint-down(medium) {
+        width: rem(120);
+      }
+      @include breakpoint-down(small) {
+        width: rem(100);
+      }
+      @include breakpoint-down(mobile) {
+        width: rem(90);
+      }
+
+      &:hover {
+        background-color: var(--clr-grey-3);
+      }
+    }
+  }
+
+  &__features {
+    padding: 0 rem(30) rem(60) rem(30);
+    display: grid;
+    gap: rem(40);
+    grid-template-columns: repeat(auto-fit, minmax(rem(500), 1fr));
+
+    @include breakpoint-down(small) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__feature-col {
+    display: grid;
+    gap: rem(40);
+    grid-template-columns: repeat(auto-fit, minmax(rem(260), 1fr));
+
+    @include breakpoint-down(small) {
+      grid-template-columns: repeat(auto-fit, minmax(rem(210), 1fr));
+    }
+  }
+}

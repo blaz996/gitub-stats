@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
+import notificationSlice from './notification/notificationSlice';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: { notification: notificationSlice },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,

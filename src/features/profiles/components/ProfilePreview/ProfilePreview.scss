@@ -1,31 +1,33 @@
 @use '../../../../global/styles/index' as *;
 
 .profile-preview {
-  background-color: var(--clr-grey-5);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  background-color: white;
   padding-block: rem(15);
   border-radius: 7px;
   box-shadow: var(--shadow-light);
   gap: rem(20);
+
   transition: all 0.3s;
   cursor: pointer;
-  justify-content: space-between;
+
+  position: relative;
 
   &:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-dark);
   }
 
-  &__avatar {
-    width: rem(80);
-    border-radius: 50%;
-    object-fit: cover;
-  }
-
-  &__name {
-    font-size: var(--font-400);
-    font-weight: 400;
+  .profile-head {
+    &__avatar {
+      width: rem(100);
+    }
+    &__username {
+      font-size: var(--font-400);
+      font-weight: 400;
+    }
   }
 }

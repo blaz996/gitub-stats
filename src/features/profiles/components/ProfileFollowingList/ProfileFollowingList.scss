@@ -3,13 +3,18 @@
 .profile-following__list {
   display: flex;
   flex-direction: column;
-  gap: rem(25);
 
   border-radius: 5px;
-  padding: rem(15) rem(30);
-  max-height: rem(350);
+  padding: rem(10) rem(30);
+  max-height: rem(327);
   overflow-y: auto;
+
   box-shadow: var(--shadow-light);
+
+  @include breakpoint-down(small) {
+    min-width: rem(250);
+    padding-inline: rem(10);
+  }
 
   &-title {
     font-size: var(--font-700);
@@ -19,12 +24,20 @@
     letter-spacing: 1.2px;
     margin-bottom: rem(10);
     color: var(--clr-grey-1);
+    border-bottom: 2px solid var(--clr-blue);
+    padding: rem(7);
   }
 
   .profile {
+    padding-top: rem(10);
     display: flex;
     gap: rem(20);
     font-size: var(--font-300);
+    align-items: center;
+
+    &:last-child {
+      margin-bottom: rem(20);
+    }
 
     &-head {
       flex-direction: row;
@@ -32,15 +45,8 @@
       flex: 1;
       gap: rem(10);
       &__avatar {
-        border-radius: 50%;
-        object-fit: cover;
+        width: rem(45);
 
-        outline: 1px solid black;
-        width: rem(50);
-
-        @include breakpoint-down(medium) {
-          width: rem(40);
-        }
         @include breakpoint-down(mobile) {
           width: rem(35);
           height: rem(35);
@@ -49,11 +55,46 @@
       &__username {
         font-size: var(--font-300);
         font-weight: 300;
+
+        @include breakpoint-down(medium) {
+          max-width: rem(100);
+          word-wrap: break-word;
+        }
       }
     }
 
     &__link {
-      align-self: center;
+      font-size: rem(30);
+      color: var(--clr-blue);
+      transition: all 0.4s;
+
+      &:hover {
+        color: var(--clr-blue-dark);
+      }
+
+      @include breakpoint-down(medium) {
+        font-size: rem(30);
+      }
+      @include breakpoint-down(small) {
+        font-size: rem(25);
+      }
     }
   }
+
+  &--empty {
+    position: relative;
+
+    h3 {
+      position: absolute;
+      top: 50%;
+      font-size: var(--font-500);
+      left: 50%;
+      transform: translate(-50%);
+      color: var(--clr-grey-1);
+    }
+  }
+}
+
+.profile-following__view-all {
+  align-self: center;
 }

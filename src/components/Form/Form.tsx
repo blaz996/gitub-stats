@@ -40,7 +40,7 @@ export const Form = <
     <>
       {formTitle && <h3 className='form__title'>{formTitle}</h3>}
       {formError && <FormError errorMsg={formError} />}
-      <form onSubmit={methods.handleSubmit(onSubmit)} id={id}>
+      <form className='form' onSubmit={methods.handleSubmit(onSubmit)} id={id}>
         {children(methods)}
       </form>
     </>

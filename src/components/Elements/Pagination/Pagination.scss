@@ -1,34 +1,83 @@
 @use '../../../global/styles/index' as *;
 .pagination {
   display: flex;
-
-  width: min(rem(400), 75vw);
   gap: rem(10);
 
-  position: absolute;
-  bottom: 2%;
-  left: 50%;
-  transform: translate(-50%);
+  @include breakpoint-down(mobile) {
+    gap: 0;
+  }
+
+  &__container {
+    position: absolute;
+    bottom: 2%;
+    width: 100%;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: rem(10);
+
+    @include breakpoint-down(mobile) {
+      .pagination__btn {
+        width: rem(27);
+      }
+    }
+  }
+  button {
+    padding: rem(6) rem(10);
+    background-color: white;
+    border: 1px solid var(--clr-grey-4);
+    outline: none;
+    transition: all 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--clr-blue);
+      color: white;
+      svg {
+        color: white;
+      }
+    }
+  }
 
   &__btn {
-    padding: rem(6) rem(12);
-    border: none;
-    border: 1px solid var(--clr-grey-3);
-    cursor: pointer;
-    transition: all 0.2s;
-    background-color: white;
-    color: var(--clr-grey-1);
-    font-size: var(--font-300);
-    max-width: rem(60);
+    width: rem(35);
+    border-radius: 5px;
+  }
+
+  &-nav {
+    &__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--clr-grey-1);
+
+      width: rem(40);
+
+      @include breakpoint-down(small) {
+        width: rem(40);
+      }
+      @include breakpoint-down(mobile) {
+        width: rem(35);
+
+        &--left:first-child,
+        &--right:last-child {
+          display: none;
+        }
+      }
+    }
+    &__icon {
+      width: rem(18);
+      color: black;
+    }
   }
   .active {
     background-color: var(--clr-blue);
     color: white;
-  }
-
-  &__icon {
-    width: rem(22);
-    border: 1px solid var(--clr-grey-3);
-    color: var(--clr-grey-1);
   }
 }

@@ -9,6 +9,7 @@
     width: rem(150);
     border-radius: 50%;
     object-fit: cover;
+    box-shadow: var(--shadow-light);
 
     margin-bottom: rem(10);
 
@@ -18,9 +19,17 @@
   }
 
   &__username {
-    font-weight: 600;
     font-size: var(--font-500);
+    font-weight: 600;
     text-align: center;
+    margin-bottom: rem(10);
+  }
+
+  &__link {
+    transition: all 0.3s;
+    &:hover {
+      color: var(--clr-blue);
+    }
   }
 
   &__name {

@@ -5,3 +5,4 @@ export * from './ProfileStats';
 export * from './ProfileRepos';
 export * from './ProfileHead';
 export * from './ProfileDetails';
+export * from './FavouriteProfile';

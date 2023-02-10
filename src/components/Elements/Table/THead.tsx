@@ -4,7 +4,8 @@ import {
   ArrowSmallDownIcon,
 } from '@heroicons/react/24/solid';
 import { FilterValue } from '@/hooks/useFilter';
-import { RepoResponse } from '@/features/profiles/types';
+
+import './THead.scss';
 
 type TheadProps<T> = {
   value: { icon: React.ReactNode | string; field: keyof T };
@@ -23,16 +24,18 @@ export const THead = <T,>({
       className={`${isActiveFilter ? 'active' : ''}`}
       onClick={() => toggleActiveFilter(value.field)}
     >
-      {value.icon}
-      {isActiveFilter && (
-        <span>
-          {activeFilterField.ascending ? (
-            <ArrowSmallUpIcon />
-          ) : (
-            <ArrowSmallDownIcon />
-          )}
-        </span>
-      )}
+      <div className='th__icon-wrapper'>
+        <span className='th__icon'>{value.icon}</span>
+        {isActiveFilter && (
+          <span>
+            {activeFilterField.ascending ? (
+              <ArrowSmallUpIcon />
+            ) : (
+              <ArrowSmallDownIcon />
+            )}
+          </span>
+        )}
+      </div>
     </th>
   );
 };

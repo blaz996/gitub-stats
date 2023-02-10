@@ -25,7 +25,7 @@ export const AtributeCard = ({
   atributeValue,
 }: AtributeCardProps) => {
   return (
-    <div className={`atribute-card ${className} ${color}`}>
+    <div className={`atribute-card atribute-card--${color} ${className}`}>
       <div className='atribute__icon-wrapper'>{icon}</div>
       <div className='atribute__value-wrapper'>
         <span className='atribute__label'>{atributeLabel}</span>

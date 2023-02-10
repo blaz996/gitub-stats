@@ -12,14 +12,8 @@ import {
 } from 'firebase/auth';
 import { app as firebaseApp } from './utils';
 
-//const googleProvider = new GoogleAuthProvider();
 export const auth = getAuth(firebaseApp);
 console.log(auth);
-/*
-export const signInWithGoogle = () => {
-  signInWithPopup(auth, googleProvider);
-};
-*/
 
 export const createAuthUserWithEmailAndPassword = async (
   email: string,

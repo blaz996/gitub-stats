@@ -7,22 +7,24 @@ import './Sidebar.scss';
 
 export type SidebarProps = {
   shown: boolean;
-  closeProfileSidebar: () => void;
+  closeSidebar: () => void;
   children: React.ReactNode;
+  className?: string;
 };
 
 export const Sidebar = ({
   shown,
-  closeProfileSidebar,
+  closeSidebar,
   children,
+  className = '',
 }: SidebarProps) => {
   const sidebarRef = useRef(null);
-  useOutsideAlerter(sidebarRef, closeProfileSidebar);
+  useOutsideAlerter(sidebarRef, closeSidebar);
   return (
     <Overlay shown={shown}>
       <div
         ref={sidebarRef}
-        className={`sidebar ${shown ? 'sidebar--active' : ''}`}
+        className={`sidebar ${shown ? 'sidebar--active' : ''} ${className}`}
       >
         {children}
       </div>

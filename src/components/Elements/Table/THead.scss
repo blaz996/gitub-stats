@@ -1,0 +1,11 @@
+@use '../../../global/styles/index' as *;
+
+.th {
+  &__icon {
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

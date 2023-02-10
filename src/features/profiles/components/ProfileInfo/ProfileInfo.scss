@@ -8,20 +8,64 @@
   box-shadow: var(--shadow-light);
   border: 1px solid var(--clr-grey-5);
   align-self: flex-start;
-  height: auto;
+
   transition: all 0.8s;
+  position: relative;
 
   grid-area: info;
 
   &__top {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    position: relative;
+
+    .profile-head {
+      &__avatar {
+        @include breakpoint-down(small) {
+          width: rem(100);
+        }
+      }
+    }
+
+    .profile-info__details {
+      display: none;
+    }
+
+    @include breakpoint-down(medium) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(0);
+
+      justify-items: center;
+      align-items: center;
+
+      margin-bottom: rem(40);
+
+      .profile-info__details {
+        display: flex;
+        justify-self: center;
+        .detail {
+          &__text {
+            max-width: rem(160);
+          }
+        }
+      }
+    }
+
+    @include breakpoint-down(small) {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      margin-bottom: 0;
+      .profile-info__details {
+        display: none;
+      }
+    }
   }
 
   &__details {
     display: flex;
+    margin-top: rem(20);
 
     flex-direction: column;
     gap: rem(20);
@@ -33,7 +77,41 @@
   }
 
   &__bottom {
-    margin-top: rem(10);
+    width: 100%;
     overflow: hidden;
+    position: relative;
+    padding-inline: rem(15);
+
+    .profile-details__dropdown {
+      .dropdown__content--active {
+        max-height: rem(300);
+      }
+    }
+
+    .profile-following__dropdown {
+      display: none;
+    }
+
+    @include breakpoint-down(medium) {
+      .profile-details__dropdown {
+        display: none;
+      }
+      .profile-following__dropdown {
+        display: block;
+      }
+      .profile-following {
+        display: grid !important;
+        padding-top: rem(30);
+        padding-bottom: rem(10);
+      }
+    }
+    @include breakpoint-down(small) {
+      .profile-details__dropdown {
+        display: block;
+      }
+      .profile-following__dropdown {
+        display: none;
+      }
+    }
   }
 }

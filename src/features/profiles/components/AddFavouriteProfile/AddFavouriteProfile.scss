@@ -1,0 +1,42 @@
+@use '../../../../global/styles/index' as *;
+
+.profile__favourite-btn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  top: rem(10);
+  right: rem(10);
+  background-color: var(--clr-blue);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: rem(7) rem(14);
+  font-size: var(--font-600);
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: var(--clr-blue-light);
+  }
+
+  @include breakpoint-down(medium) {
+    left: rem(20);
+    right: auto;
+  }
+  @include breakpoint-down(small) {
+    left: auto;
+
+    right: rem(10);
+  }
+
+  &--checked {
+    color: var(--clr-green-light);
+    font-size: var(--font-700);
+    &:hover {
+      background-color: var(--clr-blue);
+    }
+    cursor: auto;
+  }
+}

@@ -6,35 +6,52 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
+  DocumentData,
 } from 'firebase/firestore';
 import { User } from 'firebase/auth';
-import { ProfilePreviewResponse } from '@/features/profiles/types';
+import { ProfilePreviewData } from '@/features/profiles/types';
 
 export const getFavouriteProfiles = async (id: string) => {
   const favouritesRef = doc(db, 'favourite_profiles', id);
-  const docSnap = await getDoc(favouritesRef);
 
-  return docSnap.data();
+  const docSnap = await getDoc(favouritesRef);
+  const favouritesObj = docSnap.data();
+  if (favouritesObj) return favouritesObj['favourites'];
+  return null;
 };
 
-export const addFavouriteProfileData = async (
-  id: string,
-  profile: ProfilePreviewResponse
-) => {
-  const favouritesRef = doc(db, 'favourite_profiles', id);
+export type AddFavouriteProfileDataParams = {
+  currentUserId: string;
+  profile: ProfilePreviewData;
+};
+
+export type RemoveFavouriteProfileParams = {
+  authId: string;
+  profile: ProfilePreviewData;
+};
+export const addFavouriteProfileData = async ({
+  currentUserId,
+  profile,
+}: AddFavouriteProfileDataParams) => {
+  const favouritesRef = doc(db, 'favourite_profiles', currentUserId);
+  console.log(favouritesRef);
   await updateDoc(favouritesRef, {
     favourites: arrayUnion(profile),
   });
 };
 
-export const deleteFavouriteProfileData = async (
-  authId: string,
-  profileId: number
-) => {
+export const deleteFavouriteProfileData = async ({
+  authId,
+  profile,
+}: RemoveFavouriteProfileParams) => {
   const favouritesRef = doc(db, 'favourite_profiles', authId);
+  console.log(favouritesRef);
+  console.log('CALLED');
   await updateDoc(favouritesRef, {
-    favourites: arrayRemove(profileId),
+    favourites: arrayRemove(profile),
   });
+
+  return favouritesRef;
 };
 
 export const createFavouritesDocumentFromAuth = async (userAuth: User) => {

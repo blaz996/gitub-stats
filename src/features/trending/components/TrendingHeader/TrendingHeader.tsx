@@ -14,12 +14,14 @@ type AllowSelect =
 type TrendingHeaderProps = {
   title: string;
   selectEnabled: boolean;
+  isLoading?: boolean;
 } & AllowSelect &
   React.SelectHTMLAttributes<HTMLSelectElement>;
 export const TrendingHeader = ({
   title,
   selectEnabled,
   selectOptions,
+  isLoading,
   ...selectProps
 }: TrendingHeaderProps) => {
   return (
@@ -27,6 +29,7 @@ export const TrendingHeader = ({
       <h1 className='trending-header__title'>{title}</h1>
       {selectEnabled && (
         <Select
+          disabled={isLoading}
           defaultOption='javascript'
           options={selectOptions}
           label='language'

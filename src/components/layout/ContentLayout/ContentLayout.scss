@@ -1,0 +1,44 @@
+@use '../../../global/styles/index' as *;
+.layout {
+  padding: rem(40) rem(30);
+  position: relative;
+  width: 100%;
+  min-height: 89.9vh;
+
+  &__header {
+    font-size: var(--font-l);
+
+    padding-bottom: rem(5);
+    border-bottom: 3px solid var(--clr-blue);
+    margin-inline: auto;
+
+    font-weight: 300;
+    text-transform: capitalize;
+    margin-bottom: rem(20);
+  }
+  &--grey {
+    background-color: var(--clr-grey-5);
+  }
+  &-title {
+    text-transform: uppercase;
+    position: relative;
+    letter-spacing: 2px;
+    font-weight: 400;
+    font-size: var(--font-800);
+
+    padding-bottom: rem(5);
+
+    text-align: center;
+
+    &:after {
+      content: '';
+      width: rem(380);
+      position: absolute;
+      height: rem(3);
+      background-color: var(--clr-blue);
+      top: 90%;
+      left: 50%;
+      transform: translate(-50%);
+    }
+  }
+}

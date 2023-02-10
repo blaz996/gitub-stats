@@ -11,7 +11,7 @@ export const Detail = ({ icon, detail }: InfoProps) => {
   return (
     <div className='detail'>
       {icon}
-      <p className='detail__text'>{detail}</p>
+      <p className='detail__text'>{detail ? detail : 'Unknown'}</p>
     </div>
   );
 };

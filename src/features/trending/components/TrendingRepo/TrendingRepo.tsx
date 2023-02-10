@@ -3,7 +3,7 @@ import React from 'react';
 import { FaStar, FaTrophy } from 'react-icons/fa';
 import { BiGitRepoForked } from 'react-icons/bi';
 
-import { ProfilePreviewResponse } from '@/features/profiles/types';
+import { ProfilePreviewData } from '@/features/profiles/types';
 import { ProfileHead } from '@/features/profiles/components';
 import { formatDate } from '@/utils/date';
 
@@ -21,7 +21,7 @@ import './TrendingRepo.scss';
 
 export type TrendingRepoProps = {
   name: string;
-  owner: ProfilePreviewResponse;
+  owner: ProfilePreviewData;
   stargazers_count: number;
   forks: number;
   index: number;
@@ -44,7 +44,7 @@ export const TrendingRepo = ({
         <span>{index + 1}</span>
       </div>
       {index === 0 && <FaTrophy className='trending-repo__icon-trophy' />}
-      <ProfileHead avatar_url={owner.avatar_url} userName={owner.login} />
+      <ProfileHead profile={owner} link={true} />
       <div className='trending-repo__info'>
         <a href={html_url} className='trending-repo__name'>
           {name}

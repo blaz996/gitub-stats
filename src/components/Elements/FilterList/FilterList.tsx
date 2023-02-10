@@ -18,6 +18,7 @@ export const FilterList = <T,>({
     <ul className='filter-list'>
       {filters.map(({ label, filter }) => (
         <li
+          key={label}
           onClick={() => updateFilter(filter)}
           className={`filter-list__item ${
             filter.filterValue === activeFilter.filterValue

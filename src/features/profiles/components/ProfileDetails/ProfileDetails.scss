@@ -18,12 +18,20 @@
       'info info';
     grid-template-columns: 1fr;
     max-width: rem(900);
+
+    .profile-following {
+      display: none;
+    }
   }
   @include breakpoint-down(small) {
     grid-template-areas:
       'atributes'
       'info'
       'following';
+
+    .profile-following {
+      display: flex;
+    }
   }
 }
 
@@ -40,10 +48,11 @@
 
   @include breakpoint-down(medium) {
     gap: rem(15);
+    grid-template-columns: repeat(auto-fit, minmax(rem(320), 1fr));
   }
 
   @include breakpoint-down(small) {
-    grid-template-columns: repeat(auto-fit, minmax(rem(200), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(rem(280), 1fr));
   }
 
   @include breakpoint-down(mobile) {

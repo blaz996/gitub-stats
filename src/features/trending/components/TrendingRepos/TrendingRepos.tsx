@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { animated } from 'react-spring';
-import { TrendingHeader } from '../TrendingHeader';
+
 import { useFadeInAnimation } from '@/hooks/useAnimation';
 import { useTrendingRepos } from '@/features/profiles/hooks/useTrendingRepos';
-import { RepoResponse } from '@/features/profiles/types';
+
+import { ContentLayout } from '@/components/layout';
 import { Spinner } from '@/components/Elements';
+import { TrendingHeader } from '../TrendingHeader';
 import { TrendingRepo } from '../TrendingRepo/TrendingRepo';
+
+import { RepoData } from '@/features/profiles/types';
 
 import './TrendingRepos.scss';
 
 const SELECT_LANGUAGE_FILTERS = [
   'c',
-  'c#',
   'c++',
   'css',
   'java',
@@ -23,7 +26,6 @@ const SELECT_LANGUAGE_FILTERS = [
   'perl',
   'php',
   'sql',
-  'swift',
 ];
 
 export const TrendingRepos = () => {
@@ -33,28 +35,29 @@ export const TrendingRepos = () => {
     console.log('called');
     setActiveLanguage(e.target.value);
   };
-  const animatedRepos = useFadeInAnimation<RepoResponse>(
-    trendingRepos as RepoResponse[]
+  const animatedRepos = useFadeInAnimation<RepoData>(
+    trendingRepos as RepoData[]
   );
   return (
-    <div>
+    <ContentLayout>
       <TrendingHeader
         selectEnabled={true}
         selectOptions={SELECT_LANGUAGE_FILTERS}
         title='trending repos'
         onChange={handleChange}
+        isLoading={isLoading}
       />
       {isLoading ? (
         <Spinner size='medium' />
       ) : (
-        <div>
+        <div className='trending-repos'>
           {animatedRepos((styles, value, {}, i) => (
-            <animated.div style={styles}>
+            <animated.div key={value.id} style={styles}>
               <TrendingRepo key={value.id} index={i} {...value} />
             </animated.div>
           ))}
         </div>
       )}
-    </div>
+    </ContentLayout>
   );
 };

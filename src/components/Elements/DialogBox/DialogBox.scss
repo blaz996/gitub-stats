@@ -1,0 +1,27 @@
+@use '../../../global/styles/index' as *;
+
+.dialog-box {
+  position: relative;
+  padding-top: rem(10);
+  min-height: rem(100);
+
+  &__text {
+    max-width: rem(500);
+  }
+  &__buttons {
+    position: absolute;
+    bottom: rem(5);
+    gap: rem(10);
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+
+    @include breakpoint-down(small) {
+      position: relative;
+      margin-top: rem(30);
+    }
+  }
+}

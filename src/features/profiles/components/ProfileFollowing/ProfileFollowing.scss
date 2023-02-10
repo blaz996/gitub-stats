@@ -1,17 +1,17 @@
 @use '../../../../global/styles/index' as *;
 .profile-following {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(rem(200), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(rem(270), 1fr));
 
   transition: all 0.4s;
   width: 100%;
-  gap: rem(20);
+  gap: rem(40);
 
   grid-area: following;
 
-  @include breakpoint-down(medium) {
+  @include breakpoint-down(small) {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
   }
 }

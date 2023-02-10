@@ -1,0 +1,41 @@
+@use '../../../global/styles/index' as *;
+
+.nav-sidebar {
+  left: 0;
+  right: auto;
+
+  background-color: var(--clr-black);
+  color: white;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: rem(15);
+    margin-bottom: rem(40);
+
+    svg {
+      font-size: rem(27);
+      color: var(--clr-blue);
+    }
+
+    h4 {
+      font-size: var(--font-700);
+      text-transform: capitalize;
+    }
+  }
+
+  &__links {
+    .nav__link {
+      svg {
+        color: white;
+      }
+      &-text {
+        color: white;
+      }
+      &:hover {
+        background-color: var(--clr-blue);
+      }
+    }
+  }
+}

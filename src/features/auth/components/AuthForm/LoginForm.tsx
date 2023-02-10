@@ -8,7 +8,7 @@ import { InputField } from '@/components/Form';
 import { Button } from '@/components/Elements';
 import { logInWithEmailAndPassword } from '@/lib/firebase/auth';
 
-import './LoginForm.scss';
+import './AuthForm.scss';
 
 type LoginFormValues = {
   email: string;
@@ -20,28 +20,27 @@ const schema = z.object({
   password: z.string().min(1, 'Please enter your password'),
 });
 
-export const LoginForm = () => {
+export const LoginForm = ({
+  onSuccess,
+}: {
+  onSuccess: (...args: any) => void;
+}) => {
   const [loginError, setLoginError] = useState('');
+  const [isSubmiting, setIsSubmiting] = useState(false);
   const handleSubmit = async (values: LoginFormValues) => {
+    setIsSubmiting(true);
     setLoginError('');
-    try {
-      const response = await logInWithEmailAndPassword(
-        values['email'],
-        values['password']
-      );
-    } catch (err: any) {
-      console.log(err.code);
-      setLoginError(handleLogInErrors(err.code));
-    }
+    await onSuccess(values['email'], values['password'], setLoginError);
+    setIsSubmiting(false);
   };
 
   return (
-    <div className='login-form'>
+    <div className='auth-form login-form'>
       <Form<LoginFormValues, typeof schema>
         onSubmit={handleSubmit}
         options={{ mode: 'onBlur' }}
         schema={schema}
-        formTitle='log in'
+        formTitle='login'
         formError={loginError}
       >
         {({ register, formState }) => {
@@ -61,7 +60,9 @@ export const LoginForm = () => {
                 label={'password'}
                 error={formState.errors['password']}
               />
-              <Button size='large'>Log in</Button>
+              <Button disabled={isSubmiting} size='large'>
+                Login
+              </Button>
               <p className='login-form__link'>
                 Dont have an account? <Link to='/register'>Sign up</Link>
               </p>

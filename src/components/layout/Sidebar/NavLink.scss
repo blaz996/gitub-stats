@@ -1,0 +1,29 @@
+@use '../../../global/styles/index' as *;
+
+.nav__link {
+  display: flex;
+  align-items: center;
+  gap: rem(40);
+  transition: all 0.4s;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--clr-grey-5);
+  }
+
+  padding: rem(20);
+
+  svg {
+    font-size: rem(22);
+    width: rem(22);
+    color: var(--clr-grey-1);
+    flex-shrink: 0;
+  }
+
+  &-text {
+    color: black;
+    letter-spacing: 1px;
+    font-size: var(--font-400);
+    text-transform: capitalize;
+    align-self: center;
+  }
+}

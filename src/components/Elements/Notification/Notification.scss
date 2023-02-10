@@ -1,0 +1,52 @@
+@use '../../../global/styles/index' as *;
+.notification {
+  &__container {
+    position: absolute;
+    left: 50%;
+
+    z-index: 20;
+  }
+  min-width: rem(280);
+  background-color: white;
+
+  box-shadow: var(--shadow-light);
+  padding-block: rem(20);
+  border-radius: 10px;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    right: 0;
+    height: rem(5);
+    border-radius: 4px;
+    top: 0;
+  }
+
+  &--success {
+    &::before {
+      background-color: var(--clr-green);
+    }
+
+    &--fail {
+      &::before {
+        background-color: var(--clr-red);
+      }
+    }
+  }
+
+  &__message {
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    color: var(--clr-grey-1);
+  }
+  &__close {
+    cursor: pointer;
+    color: var(--clr-grey-1);
+    width: rem(25);
+  }
+}

@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
 
 import { ProfilePreview } from '../ProfilePreview';
-import { ProfilePreviewResponse } from '../../types';
+import { ProfilePreviewData } from '../../types';
 
 import './ProfilesList.scss';
 
 type ProfilesListProps = {
-  data: ProfilePreviewResponse[];
-  isSuccess: boolean;
+  children: React.ReactNode;
+  listLength: number;
+  listFetched?: boolean;
+  noProfilesMessage?: string;
+  emptyListMsg?: string;
 };
 
-export const ProfilesList = ({ data, isSuccess }: ProfilesListProps) => {
-  if (isSuccess && data.length === 0) {
-    return <h1>No users match the searched value</h1>;
+export const ProfilesList = ({
+  children,
+  listLength,
+  listFetched,
+  emptyListMsg,
+}: ProfilesListProps) => {
+  if (listFetched && listLength === 0) {
+    return <h1 className='profiles-list--empty'>{emptyListMsg}</h1>;
   }
 
-  return (
-    <div className='profiles-list'>
-      {data.map((profile) => (
-        <ProfilePreview key={profile.id} {...profile} />
-      ))}
-    </div>
-  );
+  return <div className='profiles-list'>{children}</div>;
 };

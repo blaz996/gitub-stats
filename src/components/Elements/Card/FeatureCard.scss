@@ -1,0 +1,61 @@
+@use '../../../global/styles/index' as *;
+
+.feature-card {
+  opacity: 0;
+  border-radius: 3px;
+  background-color: white;
+  padding-block: rem(10);
+
+  min-height: rem(200);
+  box-shadow: var(--shadow-light);
+  transition: all 0.3s;
+  cursor: pointer;
+
+  &__head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: rem(15);
+    border-bottom: 1px solid var(--clr-grey-2);
+    width: 100%;
+
+    svg {
+      color: var(--clr-blue);
+      font-size: var(--font-800);
+    }
+  }
+
+  &__body {
+    padding: rem(15) rem(30) rem(20) rem(30);
+
+    text-align: center;
+
+    color: var(--clr-grey-1);
+  }
+
+  &__title {
+    color: black;
+    font-size: var(--font-500);
+    margin-bottom: rem(15);
+  }
+
+  &__text {
+    align-self: center;
+    height: 100%;
+  }
+}
+
+.c1 {
+  animation: fadeOut 0.7s forwards;
+}
+.c2 {
+  animation: fadeOut 0.7s 0.7s forwards;
+}
+
+.c3 {
+  animation: fadeOut 0.7s 1.4s forwards;
+}
+
+.c4 {
+  animation: fadeOut 0.7s 2.1s forwards;
+}

@@ -26,6 +26,7 @@ export const LineChart = <T,>({
   wrapperHeight,
   wrapperWidth,
   chartTitle,
+  className,
 }: LineChartProps<T>) => {
   console.log(data);
   return (
@@ -33,6 +34,7 @@ export const LineChart = <T,>({
       wrapperWidth={wrapperWidth}
       wrapperHeight={wrapperHeight}
       chartTitle={chartTitle}
+      className={className}
     >
       <Chart data={data}>
         <XAxis dataKey='label' />

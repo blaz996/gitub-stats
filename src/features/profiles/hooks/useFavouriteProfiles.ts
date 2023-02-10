@@ -1,13 +1,13 @@
 import React from 'react';
 import { useQuery } from 'react-query';
-import { ProfilePreviewResponse } from '../types';
 
-import { getFavouriteProfiles } from '@/lib/firebase/favouriteProfies';
+import { getFavouriteProfiles } from '@/lib/firebase/favouriteProfiles';
+import { ProfilePreviewData } from '../types';
 
-export const useFavouriteProfiles = (profileId: string, config?: {}) => {
-  return useQuery({
+export const useFavouriteProfiles = (userId: string, config?: {}) => {
+  return useQuery<ProfilePreviewData[]>({
     ...config,
-    queryKey: ['favouriteProfiles', profileId],
-    queryFn: () => getFavouriteProfiles(profileId),
+    queryKey: ['favouriteProfiles', userId],
+    queryFn: () => getFavouriteProfiles(userId),
   });
 };

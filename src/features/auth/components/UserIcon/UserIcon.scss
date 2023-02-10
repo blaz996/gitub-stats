@@ -1,0 +1,19 @@
+@use '../../../../global/styles/index' as *;
+
+.user-icon {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: rem(40);
+  height: rem(40);
+  border-radius: 50%;
+  padding: rem(10);
+  box-shadow: var(--shadow-light);
+  background-color: var(--clr-blue);
+  &__letter {
+    font-size: var(--font-500);
+    color: white;
+    font-weight: 400;
+  }
+}

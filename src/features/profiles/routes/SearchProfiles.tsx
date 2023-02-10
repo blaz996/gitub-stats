@@ -4,6 +4,8 @@ import { SearchBar } from '@/components/SearchBar';
 import { ProfilePreview, ProfilesList } from '../components';
 import { useProfiles } from '../hooks/useProfiles';
 import { Pagination } from '@/components/Elements';
+import { ContentLayout } from '@/components/layout';
+import { ProfilePreviewData } from '../types';
 
 export const SearchProfiles = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -27,19 +29,27 @@ export const SearchProfiles = () => {
   };
 
   return (
-    <>
+    <ContentLayout bgColor='grey'>
       <SearchBar
         handleSubmit={handleSubmit}
         updateSearchValue={setSearchValue}
         isLoading={isLoading}
       />
-      <ProfilesList data={activePage} isSuccess={isSuccess} />
+      <ProfilesList
+        listLength={activePage.length}
+        listFetched={isSuccess}
+        emptyListMsg='No profiles found'
+      >
+        {activePage.map((profile) => (
+          <ProfilePreview key={profile.id} profile={profile} />
+        ))}
+      </ProfilesList>
 
-      <Pagination
+      <Pagination<ProfilePreviewData>
         data={profilesData}
         activePageIndex={activePageIndex}
         updateActivePageIndex={setActivePageIndex}
       />
-    </>
+    </ContentLayout>
   );
 };

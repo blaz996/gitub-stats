@@ -6,7 +6,6 @@
   flex: 1;
   border-radius: 5px;
   color: white;
-  background-color: black;
 
   padding: 0 rem(15);
 
@@ -18,7 +17,6 @@
       width: rem(60);
       height: rem(60);
       border-radius: 50%;
-      background-color: red;
 
       display: flex;
       margin-right: auto;
@@ -46,6 +44,10 @@
         }
       }
     }
+
+    &__label {
+      font-weight: 600;
+    }
     &__value {
       font-weight: 700;
 
@@ -58,6 +60,46 @@
         @include breakpoint-down(medium) {
           font-size: var(--font-300);
         }
+      }
+    }
+  }
+
+  &--green {
+    background-color: var(--clr-green);
+    .atribute__icon-wrapper {
+      background-color: var(--clr-green-light);
+      svg {
+        fill: var(--clr-green);
+      }
+    }
+  }
+
+  &--blue {
+    background-color: var(--clr-blue);
+    .atribute__icon-wrapper {
+      background-color: var(--clr-blue-light);
+      svg {
+        fill: var(--clr-blue-dark);
+      }
+    }
+  }
+
+  &--purple {
+    background-color: var(--clr-purple);
+    .atribute__icon-wrapper {
+      background-color: var(--clr-purple-light);
+      svg {
+        fill: var(--clr-purple);
+      }
+    }
+  }
+
+  &--yellow {
+    background-color: var(--clr-yellow);
+    .atribute__icon-wrapper {
+      background-color: var(--clr-yellow-light);
+      svg {
+        fill: var(--clr-yellow);
       }
     }
   }

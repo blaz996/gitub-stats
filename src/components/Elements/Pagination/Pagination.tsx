@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { usePagination } from '@/hooks/usePagination';
 import {
   ChevronLeftIcon,
   ChevronDoubleLeftIcon,
@@ -13,64 +13,69 @@ import { SetState } from '@/types';
 
 import './Pagination.scss';
 
-type PaginationProps = {
-  paginationStep?: number;
-  pagesNum?: number;
+type PaginationProps<T> = {
   activePageIndex: number;
-  data: unknown[];
+  data: T[][];
   updateActivePageIndex: SetState;
 };
 
-export const Pagination = ({
-  paginationStep,
-  pagesNum,
+export const Pagination = <T,>({
   activePageIndex,
   updateActivePageIndex,
   data,
-}: PaginationProps) => {
-  const [paginatedArr, setPaginatedArr] = useState(generateRange(1, 4));
-
-  useEffect(() => {
-    setPaginatedArr(updatePagination);
-    console.log(paginatedArr);
-  }, [activePageIndex, data]);
-
-  const {
-    navigateBackwardStep,
-    navigateForwardStep,
-    navigateToPage,
-    nextPage,
-    prevPage,
-    updatePagination,
-  } = navigatePagination(activePageIndex, data, updateActivePageIndex);
+}: PaginationProps<T>) => {
+  const { paginationArr, nextPage, previousPage, changePage } = usePagination(
+    activePageIndex,
+    data,
+    updateActivePageIndex
+  );
 
   if (data.length === 0) {
     return <></>;
   }
 
   return (
-    <div className='pagination'>
-      <ChevronDoubleLeftIcon
-        onClick={() => navigateBackwardStep(paginationStep)}
-        className='pagination__icon'
-      />
-      <ChevronLeftIcon onClick={prevPage} className='pagination__icon ' />
-      {paginatedArr.map((num) => (
+    <div className='pagination__container'>
+      <div className='pagination'>
         <button
-          onClick={() => navigateToPage(num - 1)}
-          key={num}
-          className={`pagination__btn ${
-            num === activePageIndex + 1 ? 'active' : ''
-          } `}
+          onClick={() => previousPage(3)}
+          className='pagination-nav__btn pagination-nav__btn--left'
         >
-          {num}
+          <ChevronDoubleLeftIcon className='pagination-nav__icon' />
         </button>
-      ))}
-      <ChevronRightIcon onClick={nextPage} className='pagination__icon' />
-      <ChevronDoubleRightIcon
-        onClick={() => navigateForwardStep(paginationStep)}
-        className='pagination__icon'
-      />
+        <button
+          className='pagination-nav__btn pagination-nav__btn--left'
+          onClick={() => previousPage(1)}
+        >
+          <ChevronLeftIcon className='pagination-nav__icon ' />
+        </button>
+        <div className='pagination__buttons'>
+          {paginationArr.map((num) => (
+            <button
+              onClick={() => changePage(num - 1)}
+              key={num}
+              className={`pagination__btn ${
+                num === activePageIndex + 1 ? 'active' : ''
+              } `}
+            >
+              {num}
+            </button>
+          ))}
+        </div>
+
+        <button
+          className='pagination-nav__btn pagination-nav__btn--right'
+          onClick={() => nextPage(1)}
+        >
+          <ChevronRightIcon className='pagination-nav__icon' />
+        </button>
+        <button
+          className='pagination-nav__btn pagination-nav__btn--right'
+          onClick={() => nextPage(3)}
+        >
+          <ChevronDoubleRightIcon className='pagination-nav__icon' />
+        </button>
+      </div>
     </div>
   );
 };

@@ -1,17 +1,18 @@
 @use '../../../global/styles/index' as *;
+.filter-list {
+  background-color: white;
+  padding: rem(15);
+}
+
 .filter-list__item {
   padding: rem(15);
-  background-color: #ccc;
+  background-color: white;
   cursor: pointer;
   min-width: rem(200);
   text-align: center;
 
-  &:not(:last-child) {
-    border-bottom: 1px solid var(--clr-grey-1);
-  }
-
   &:hover {
-    background-color: var(--clr-grey-2);
+    background-color: var(--clr-grey-5);
   }
 
   &--disabled {

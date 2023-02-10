@@ -1,10 +1,21 @@
 @use '../../../global/styles/index' as *;
 .nav {
   background-color: var(--clr-blue);
-  padding: rem(20) rem(40);
+  padding: 0 rem(40);
+  min-height: rem(80);
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @include breakpoint-down(medium) {
+    justify-content: space-between;
+    padding-inline: rem(10);
+  }
+
+  @include breakpoint-down(small) {
+    justify-content: start;
+  }
 
   &__logo {
     color: white;
@@ -12,30 +23,56 @@
     align-items: center;
     gap: rem(10);
     font-size: var(--font-700);
-  }
+    flex: 1;
 
-  &__links {
-    display: flex;
-    align-items: center;
-    gap: rem(40);
-    margin-right: rem(40);
+    svg {
+      flex-shrink: 0;
+    }
 
-    @include breakpoint-down(medium) {
-      margin-right: 0;
-      gap: 0;
+    @include breakpoint-down(mobile) {
+      font-size: var(--font-500);
     }
   }
 
-  &__link {
-    padding: rem(20) rem(20);
+  &__links {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: rem(60);
+    margin-right: rem(60);
 
+    @include breakpoint-down(medium) {
+      gap: rem(15);
+    }
+
+    @include breakpoint-down(small) {
+      gap: rem(0);
+      margin-right: 0;
+    }
+  }
+
+  .nav__link {
+    padding-block: rem(28);
     color: white;
-    font-size: var(--font-400);
-
-    transition: all 0.4s;
+    font-weight: 300;
 
     &:hover {
       background-color: var(--clr-blue-light);
+    }
+
+    &-text {
+      color: white;
+      font-weight: 200;
+    }
+
+    @include breakpoint-down(mobile) {
+      font-size: var(--font-300);
+    }
+  }
+
+  .navbar__link {
+    @include breakpoint-down(small) {
+      display: none;
     }
   }
 
@@ -48,5 +85,26 @@
       width: rem(35);
       color: white;
     }
+  }
+
+  &__sidebar-toggle {
+    width: rem(28);
+    color: white;
+    display: none;
+    margin-right: rem(15);
+    cursor: pointer;
+
+    @include breakpoint-down(small) {
+      display: block;
+    }
+  }
+
+  &__toggle-user {
+    color: white;
+    font-size: rem(30);
+    cursor: pointer;
+    position: absolute;
+    top: rem(24);
+    right: rem(40);
   }
 }

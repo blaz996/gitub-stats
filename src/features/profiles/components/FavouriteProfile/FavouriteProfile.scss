@@ -1,0 +1,25 @@
+@use '../../../../global/styles/index' as *;
+.favourite-profile {
+  position: relative;
+
+  &__remove-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--clr-red);
+    color: white;
+    padding: rem(5) rem(10);
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s;
+    z-index: 2;
+
+    &:hover {
+      background-color: rgb(236, 0, 0);
+    }
+
+    svg {
+      width: rem(20);
+    }
+  }
+}

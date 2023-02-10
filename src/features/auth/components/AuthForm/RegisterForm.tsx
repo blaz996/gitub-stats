@@ -1,16 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import z from 'zod';
-import { getAuth, User } from 'firebase/auth';
 
-import { createAuthUserWithEmailAndPassword } from '@/lib/firebase/auth';
-import { updateCreatedUserName } from '@/lib/firebase/auth';
-import { handleSignUpErrors } from '@/lib/firebase/authErrors';
 import { Form } from '@/components/Form';
 import { InputField } from '@/components/Form';
 import { Button } from '@/components/Elements';
-import { createFavouritesDocumentFromAuth } from '@/lib/firebase/favouriteProfies';
-import './RegisterForm.scss';
-import userEvent from '@testing-library/user-event';
+
+import './AuthForm.scss';
 
 type RegisterFormValues = {
   userName: string;
@@ -32,30 +27,31 @@ const schema = z.object({
   repeatPassword: z.string().min(1, 'Please confirm your password'),
 });
 
-export const RegisterForm = () => {
-  const auth = getAuth();
-  console.log(auth.currentUser?.displayName);
+export const RegisterForm = ({
+  onSuccess,
+}: {
+  onSuccess: (...args: any) => void;
+}) => {
   const [signupFormError, setSignupFormError] = useState('');
+  const [isSubmiting, setIsSubmiting] = useState(false);
 
   const handleSignIn = async (values: RegisterFormValues) => {
+    setIsSubmiting(true);
     setSignupFormError('');
     if (values['password'] !== values['repeatPassword']) {
       setSignupFormError('Passwords dont match');
       return;
     }
-    try {
-      const { user } = await createAuthUserWithEmailAndPassword(
-        values['email'],
-        values['password']
-      );
-      updateCreatedUserName(values['userName']);
-      createFavouritesDocumentFromAuth(user);
-    } catch (err: any) {
-      setSignupFormError(handleSignUpErrors(err.code));
-    }
+    await onSuccess(
+      values['email'],
+      values['password'],
+      values['userName'],
+      setSignupFormError
+    );
+    setIsSubmiting(false);
   };
   return (
-    <div className='register-form'>
+    <div className='auth-form register-form'>
       <Form<RegisterFormValues, typeof schema>
         onSubmit={handleSignIn}
         options={{ mode: 'onBlur' }}
@@ -67,6 +63,7 @@ export const RegisterForm = () => {
           return (
             <>
               <InputField
+                type='email'
                 placeholder='Email'
                 registration={register('email')}
                 error={formState.errors['email']}
@@ -79,18 +76,22 @@ export const RegisterForm = () => {
                 label='user Name'
               />
               <InputField
+                type='password'
                 registration={register('password')}
                 error={formState.errors['password']}
                 label='password'
                 placeholder='Password'
               />
               <InputField
+                type='password'
                 registration={register('repeatPassword')}
                 error={formState.errors['repeatPassword']}
                 label='confrim password'
                 placeholder='Confirm Password'
               />
-              <Button size='large'>Sign up</Button>
+              <Button disabled={isSubmiting} size='large'>
+                Sign up
+              </Button>
             </>
           );
         }}

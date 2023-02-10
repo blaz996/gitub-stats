@@ -1,9 +1,9 @@
-import { stat } from 'fs';
-import { Profile, RepoResponse } from '../types';
+import { RepoData } from '../types';
 export const getRepoStatTotal = (
-  repos: RepoResponse[],
-  repoStat: 'stargazers_count' | 'watchers' | 'forks'
+  repos: RepoData[],
+  repoStat: 'stargazers_count' | 'forks'
 ) => {
+  console.log('called');
   return repos.reduce((acc, repo) => (acc += repo[repoStat]), 0);
 };
 
@@ -12,7 +12,8 @@ export type ChartStat = {
   value: number;
 };
 
-export const getReposPerLanguage = (repos: RepoResponse[]) => {
+export const getReposPerLanguage = (repos: RepoData[]) => {
+  console.log('called');
   return repos.reduce((acc, currRepo) => {
     const currLanguage = currRepo['language'];
     if (currLanguage === 'Unknown') return acc;
@@ -23,9 +24,10 @@ export const getReposPerLanguage = (repos: RepoResponse[]) => {
 };
 
 export const getRepoStatsPerLanguage = (
-  repos: RepoResponse[],
-  repoStat: 'stargazers_count' | 'watchers' | 'forks'
+  repos: RepoData[],
+  repoStat: 'stargazers_count' | 'forks'
 ) => {
+  console.log('called');
   return repos.reduce((acc, currRepo) => {
     const currLanguage = currRepo.language;
     const currStat = currRepo[repoStat] as number;
@@ -54,7 +56,7 @@ export const formatDataForChart = (
   }
   return result.sort((a, b) => b.value - a.value);
 };
-export const getProfileActivityPerYear = (repos: RepoResponse[]) => {
+export const getProfileActivityPerYear = (repos: RepoData[]) => {
   return repos.reduce((acc, currRepo) => {
     const { created_at } = currRepo;
     const creationYear = new Date(created_at).getFullYear();

@@ -1,16 +1,26 @@
 import React from 'react';
 
 import { ProfileFollowingList } from '../ProfileFollowingList';
-import { Profile } from '../../types';
+import { ProfileData } from '../../types';
 import { useProfile } from '../../hooks/useProfile';
 
 import './ProfileFollowing.scss';
 
-export const ProfileFollowing = ({ profile }: { profile: Profile }) => {
+type ProfileFollowingProps = {
+  following: ProfileData[];
+  followers: ProfileData[];
+  url: string;
+};
+
+export const ProfileFollowing = ({
+  following,
+  followers,
+  url,
+}: ProfileFollowingProps) => {
   return (
     <div className='profile-following'>
-      <ProfileFollowingList data={profile.followers} type='followers' />
-      <ProfileFollowingList data={profile.following} type='following' />
+      <ProfileFollowingList data={followers} type='followers' url={url} />
+      <ProfileFollowingList data={following} type='following' url={url} />
     </div>
   );
 };

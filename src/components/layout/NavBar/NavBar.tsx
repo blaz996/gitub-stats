@@ -1,53 +1,88 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { FaGithub } from 'react-icons/fa';
+import { Bars3Icon } from '@heroicons/react/24/solid';
+import { FaHome, FaGithub, FaSearch } from 'react-icons/fa';
+import { BiTrendingUp, BiLogIn } from 'react-icons/bi';
+import { CgProfile } from 'react-icons/cg';
 
+import { useAuth } from '@/features/auth/hooks/useAuth';
+import { useOutsideAlerter } from '@/hooks/useOutsideAlerter';
 import { useDisclosure } from '@/hooks/useDisclosure';
-import { ProfileSidebar } from '../Sidebar';
-import { UserCircleIcon } from '@heroicons/react/24/solid';
+
+import { NavSidebar } from '../Sidebar/NavSidebar';
+
+import { NavLink } from '../Sidebar';
 
 import './NavBar.scss';
+import { UserPopup } from '@/features/auth/components/UserPopup';
+
+export const navLinks = [
+  { icon: <FaHome />, path: '/', link: 'home' },
+  { icon: <FaSearch />, path: '/search', link: 'search' },
+  { icon: <BiTrendingUp />, path: '/trending', link: 'trending' },
+  { icon: <BiLogIn />, path: '/login', link: 'login' },
+];
 
 export const NavBar = () => {
-  const { isOpen: isSidebarOpen, toggle: toggleSidebar } = useDisclosure();
   const {
-    isOpen: isProfileSidebarOpen,
-    toggle: toggleProfileSidebar,
-    close: closeProfileSidebar,
+    isOpen: isProfilePopupOpen,
+    toggle: toggleProfilePopup,
+
+    close: closeProfilePopup,
   } = useDisclosure();
+
+  const {
+    isOpen: isNavSidebarOpen,
+    open: openNavSidebar,
+    close: closeNavSidebar,
+  } = useDisclosure();
+
+  const popupRef = useRef(null);
+  const popupToggleRef = useRef(null);
+  useOutsideAlerter(popupRef, closeProfilePopup, popupToggleRef);
+
+  const { currentUser } = useAuth();
+
   return (
     <>
       <nav className='nav'>
+        <Bars3Icon onClick={openNavSidebar} className='nav__sidebar-toggle' />
+
         <h1 className='nav__logo'>
           <FaGithub />
           Github Stats
         </h1>
         <ul className='nav__links'>
-          <li>
-            <Link className='nav__link' to=''>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link className='nav__link' to='search'>
-              Search
-            </Link>
-          </li>
-          <li>
-            <Link className='nav__link' to='trending'>
-              Trending Repos
-            </Link>
-          </li>
-          <li>
-            <span className='nav__profile'>
-              <UserCircleIcon onClick={toggleProfileSidebar} />
-            </span>
-          </li>
+          {navLinks.slice(0, 3).map((navLink) => (
+            <li key={navLink.link}>
+              <NavLink
+                key={navLink.link}
+                className='navbar__link'
+                linkPath={navLink.path}
+                link={navLink.link}
+              />
+            </li>
+          ))}
+          {currentUser ? (
+            <li ref={popupToggleRef} onClick={toggleProfilePopup}>
+              <CgProfile className='nav__toggle-user' />
+            </li>
+          ) : (
+            <li>
+              <Link className='nav__link' to='/login'>
+                Login
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
-      <ProfileSidebar
-        shown={isProfileSidebarOpen}
-        closeProfileSidebar={closeProfileSidebar}
+      {isProfilePopupOpen && (
+        <UserPopup ref={popupRef} closePopup={closeProfilePopup} />
+      )}
+      <NavSidebar
+        shown={isNavSidebarOpen}
+        closeSidebar={closeNavSidebar}
+        currentProfile={currentUser}
       />
 
       <Outlet />

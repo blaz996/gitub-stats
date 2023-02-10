@@ -1,7 +1,17 @@
 @use '../../../../global/styles/index' as *;
 
 .profile-charts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: rem(20);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(rem(500), 1fr));
+  gap: rem(40);
+
+  @include breakpoint-down(medium) {
+    grid-template-columns: repeat(auto-fit, minmax(rem(450), 1fr));
+    gap: rem(20);
+    justify-content: center;
+  }
+  @include breakpoint-down(small) {
+    grid-template-columns: 1fr;
+    gap: rem(20);
+  }
 }

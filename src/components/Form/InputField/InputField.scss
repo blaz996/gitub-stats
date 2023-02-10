@@ -10,7 +10,7 @@
   font-size: var(--font-300);
   outline: none;
 
-  width: 100%;
+  max-width: rem(280);
 
   &--error {
     border-color: var(--clr-red);

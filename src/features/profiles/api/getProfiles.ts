@@ -1,13 +1,13 @@
 import { axios } from '@/lib/axios';
-import { ProfilePreviewResponse } from '../types';
+import { ProfilePreviewData } from '../types';
 
 type ResponseData = {
-  items: ProfilePreviewResponse[];
+  items: ProfilePreviewData[];
 };
 
 export const getProfiles = async (
   userName: string
-): Promise<ProfilePreviewResponse[]> => {
+): Promise<ProfilePreviewData[]> => {
   const { items } = await axios.get<never, ResponseData>(
     `search/users?q=${userName}&per_page=${100}`
   );

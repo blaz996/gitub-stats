@@ -1,12 +1,28 @@
-@use '../../../global/styles/index';
+@use '../../../global/styles/index' as *;
 
 .dropdown {
+  &__toggle {
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: rem(5);
+    margin-top: rem(15);
+    border: none;
+    box-shadow: var(--shadow-light);
+
+    svg {
+      width: rem(20);
+    }
+  }
   &__content {
-    margin-top: -100%;
-    transition: all 0.75s;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.55s linear;
 
     &--active {
-      margin-top: 0;
+      max-height: rem(500);
     }
   }
 }

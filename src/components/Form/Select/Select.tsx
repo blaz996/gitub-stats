@@ -32,9 +32,17 @@ export const Select = ({
         >
           {options.map((option) => {
             if (option === defaultOption) {
-              return <option selected={true}>{option.toUpperCase()}</option>;
+              return (
+                <option key={option} selected={true}>
+                  {option.toUpperCase()}
+                </option>
+              );
             }
-            return <option value={option}>{option.toUpperCase()}</option>;
+            return (
+              <option key={option} value={option}>
+                {option.toUpperCase()}
+              </option>
+            );
           })}
         </select>
 

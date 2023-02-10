@@ -1,7 +1,6 @@
 import React from 'react';
 import { THead } from './THead';
 import { FilterValue } from '@/hooks/useFilter';
-import { RepoResponse } from '@/features/profiles/types';
 
 import './Table.scss';
 export type TableColumn<T> = {

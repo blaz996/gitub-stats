@@ -4,16 +4,22 @@
   width: min(70vw, rem(500));
   position: relative;
   margin-inline: auto;
-  margin-top: rem(40);
+  margin-top: rem(10);
 
   &--input {
     padding-inline: rem(15);
     border-radius: 20px;
     height: rem(50);
+    border: none;
+    box-shadow: var(--shadow-light);
   }
 
   form {
     position: relative;
+  }
+
+  .input {
+    max-width: 100%;
   }
 
   &__button {

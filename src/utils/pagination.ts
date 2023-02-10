@@ -18,8 +18,14 @@ export const navigatePagination = (
   data: unknown[],
   updateActivePageIndex: SetState
 ) => {
-  const pageUpExists = (step: number = 1) =>
-    activePageIndex + step >= data.length ? false : true;
+  const pageUpExists = (step: number = 3): any => {
+    if (step === 0) {
+      return 0;
+    }
+    if (activePageIndex + step > data.length) {
+      return pageUpExists(step - 1);
+    }
+  };
 
   const pageDownExists = (step: number = 1) =>
     activePageIndex - step < 0 ? false : true;

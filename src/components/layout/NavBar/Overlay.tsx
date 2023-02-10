@@ -8,6 +8,8 @@ type OverlayProps = {
 
 export const Overlay = ({ children, shown }: OverlayProps) => {
   return (
-    <div className={`overlay ${shown && 'overlay--active'}`}>{children}</div>
+    <div className={`overlay ${shown ? 'overlay--active' : ''}`}>
+      {children}
+    </div>
   );
 };

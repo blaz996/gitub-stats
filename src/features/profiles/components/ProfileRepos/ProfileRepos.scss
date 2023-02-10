@@ -1,19 +1,16 @@
 @use '../../../../global/styles/index' as *;
+
 .profile-repos {
   &__heading {
-    display: flex;
-    justify-content: space-between;
-    &-title {
-      font-size: var(--font-800);
-      color: var(--clr-grey-1);
-      font-weight: 200;
-      text-transform: capitalize;
-    }
-    &-filter {
-      font-size: rem(30);
+    margin-bottom: rem(20);
 
-      display: flex;
-      align-items: center;
+    &-filter {
+      display: none;
+      font-size: rem(30);
+      @include breakpoint-down('small') {
+        display: flex;
+        align-items: center;
+      }
 
       .heading-filter__btn {
         width: rem(40);
@@ -31,7 +28,10 @@
     }
   }
 
-  .modal {
-    background-color: #ccc;
+  .table {
+    max-width: rem(1000);
+    &-wrapper {
+      margin-inline: auto;
+    }
   }
 }

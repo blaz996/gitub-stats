@@ -37,10 +37,18 @@
     gap: rem(10);
     height: 100%;
 
-    @include breakpoint-down(small) {
+    @include breakpoint-down(medium) {
       justify-content: center;
       gap: 0;
       flex-direction: column;
+      justify-self: start;
+    }
+
+    @include breakpoint-down(mobile) {
+      margin-top: rem(20);
+      &__username {
+        display: none;
+      }
     }
 
     &__avatar {
@@ -64,6 +72,7 @@
   &__ranking {
     position: absolute;
     left: rem(-90);
+
     width: rem(55);
     height: rem(55);
     border-radius: 50%;
@@ -73,10 +82,12 @@
 
     outline: 4px solid var(--clr-blue);
     color: var(--clr-blue);
-    font-weight: 500;
+    font-weight: 700;
     font-size: var(--font-500);
 
     @include breakpoint-down(medium) {
+      width: rem(40);
+      height: rem(40);
       top: -10px;
       left: -10px;
       outline: 2px solid var(--clr-blue);
@@ -216,9 +227,25 @@
 
     &-trophy {
       position: absolute;
-      left: -17%;
-      font-size: var(--font-l);
+      left: 48%;
+
+      top: 5%;
+      font-size: var(--font-800);
       color: var(--clr-yellow);
+
+      @media (max-width: 50em) {
+        left: 54%;
+      }
+
+      @include breakpoint-down(small) {
+        font-size: var(--font-700);
+        top: 10%;
+        left: 58%;
+      }
+      @include breakpoint-down(mobile) {
+        top: -15%;
+        left: 50%;
+      }
     }
 
     &-calendar {

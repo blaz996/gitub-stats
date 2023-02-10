@@ -10,6 +10,19 @@
   }
 }
 
+@keyframes fadeOut {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0);
+    opacity: 1;
+    animation-fill-mode: forwards;
+  }
+}
+
 @keyframes loading {
   from {
     transform: rotate(0turn);

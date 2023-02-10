@@ -11,13 +11,12 @@ import { TbGitFork } from 'react-icons/tb';
 import { SiJavascript } from 'react-icons/si';
 import { FaStar } from 'react-icons/fa';
 
-import { Profile, RepoResponse } from '../types';
+import { ProfileData, RepoData } from '../types';
 import { ATRIBUTE_CARD_COLORS } from '@/components/Elements/Card';
 import { TableColumn } from '@/components/Elements';
 import { FilterValue } from '@/hooks/useFilter';
 
 type ProfileAtributeData = {
-  value: keyof Profile;
   color: keyof typeof ATRIBUTE_CARD_COLORS;
   icon: React.ReactElement;
   label: string;
@@ -26,28 +25,24 @@ type ProfileAtributeData = {
 export const PROFILE_ATRIBUTES_DATA: ProfileAtributeData[][] = [
   [
     {
-      value: 'followers_num',
       icon: <UsersIcon />,
       color: 'green',
       label: 'Followers',
     },
     {
-      value: 'following_num',
       icon: <UserPlusIcon />,
-      color: 'blue',
+      color: 'purple',
       label: 'Following',
     },
   ],
   [
     {
-      value: 'public_repos',
       icon: <RiGitRepositoryLine />,
-      color: 'purple',
+      color: 'blue',
       label: 'Repos',
     },
 
     {
-      value: 'totalStars',
       icon: <StarIcon />,
       color: 'yellow',
       label: 'Stars',
@@ -57,7 +52,7 @@ export const PROFILE_ATRIBUTES_DATA: ProfileAtributeData[][] = [
 
 type ProfileDetailData = {
   icon: React.ReactElement;
-  detail: keyof Profile;
+  detail: keyof ProfileData;
 };
 
 export const PROFILE_DETAILS_DATA: ProfileDetailData[] = [
@@ -69,7 +64,7 @@ export const PROFILE_DETAILS_DATA: ProfileDetailData[] = [
   { icon: <MapIcon className='detail__icon' />, detail: 'location' },
 ];
 
-export const REPO_TABLE_COLUMNS_DATA: TableColumn<RepoResponse>[] = [
+export const REPO_TABLE_COLUMNS_DATA: TableColumn<RepoData>[] = [
   { field: 'name', icon: 'Name', atribute: 'Name' },
   { field: 'stargazers_count', icon: <FaStar />, atribute: 'Stars' },
   { field: 'forks', icon: <TbGitFork />, atribute: 'Forks' },
@@ -77,7 +72,7 @@ export const REPO_TABLE_COLUMNS_DATA: TableColumn<RepoResponse>[] = [
 ];
 
 export const REPO_SELECT_FILTERS: {
-  filter: FilterValue<RepoResponse>;
+  filter: FilterValue<RepoData>;
   label: string;
 }[] = [
   {

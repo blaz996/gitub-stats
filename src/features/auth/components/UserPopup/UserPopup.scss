@@ -1,0 +1,45 @@
+@use '../../../../global/styles/index' as *;
+
+.user-popup {
+  border-radius: 5px;
+  box-shadow: var(--shadow-light);
+  width: rem(250);
+  position: absolute;
+  background-color: white;
+  right: rem(100);
+  top: rem(35);
+  right: rem(75);
+  z-index: 20;
+
+  &__header {
+    .user-icon {
+      width: rem(50);
+      height: rem(50);
+      margin-bottom: rem(10);
+    }
+    padding-block: rem(20);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid var(--clr-grey-2);
+
+    &-email {
+      font-size: var(--font-300);
+    }
+  }
+
+  &__body {
+    padding-block: rem(15);
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__links {
+    .nav__link {
+      &:hover {
+        background-color: var(--clr-grey-5);
+      }
+    }
+  }
+}

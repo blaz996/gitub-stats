@@ -27,22 +27,24 @@ export const BarChart = <T,>({
   wrapperHeight,
   wrapperWidth,
   chartTitle,
+  className,
 }: BarChartProps<T>) => {
   return (
     <ChartWrapper
       wrapperWidth={wrapperWidth}
       wrapperHeight={wrapperHeight}
       chartTitle={chartTitle}
+      className={className}
     >
       <Chart data={data} width={width} height={height} barCategoryGap='20%'>
-        <XAxis dataKey='label' />
-        <YAxis />
+        <XAxis dataKey='label' interval={0} fontSize={10} />
+        <YAxis scale='sqrt' />
         <Tooltip
           cursor={{ fill: 'transparent' }}
           content={<CustomToolTip chartType='bar' />}
         />
         <CartesianGrid horizontal={false} vertical={false} />
-        <Bar dataKey='value' cursor='pointer' minPointSize={5}>
+        <Bar dataKey='value' cursor='pointer'>
           {chartDefaultColors.map((color, i) => {
             return <Cell key={i} fill={color} />;
           })}

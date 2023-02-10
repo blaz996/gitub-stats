@@ -11,6 +11,7 @@ export const PieChart = <T,>({
   wrapperHeight,
   wrapperWidth,
   chartTitle,
+  className,
 }: ChartProps<T>) => {
   console.log(data);
   return (
@@ -18,6 +19,7 @@ export const PieChart = <T,>({
       wrapperWidth={wrapperWidth}
       wrapperHeight={wrapperHeight}
       chartTitle={chartTitle}
+      className={className}
     >
       <Chart>
         <Tooltip
@@ -30,7 +32,10 @@ export const PieChart = <T,>({
             return <Cell key={i} fill={chartDefaultColors[i]} />;
           })}
         </Pie>
-        <Legend verticalAlign='bottom' wrapperStyle={{ top: 270, left: 25 }} />
+        <Legend
+          verticalAlign='bottom'
+          wrapperStyle={{ fontSize: '12px', bottom: '10px' }}
+        />
       </Chart>
     </ChartWrapper>
   );

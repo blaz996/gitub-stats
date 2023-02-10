@@ -2,14 +2,19 @@ import React, { RefObject, useEffect } from 'react';
 
 export const useOutsideAlerter = (
   ref: RefObject<HTMLDivElement>,
-  callback: () => void
+  callback: () => void,
+  ignooreRef?: RefObject<any>
 ) => {
   useEffect(() => {
     /**
      * Alert if clicked on outside of element
      */
     function handleClickOutside(e: any) {
-      if (ref.current && !ref.current.contains(e.target)) {
+      if (
+        ref.current &&
+        !ref.current.contains(e.target) &&
+        !ignooreRef?.current.contains(e.target)
+      ) {
         callback();
       }
     }

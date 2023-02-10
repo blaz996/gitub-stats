@@ -1,0 +1,20 @@
+@use '../../../global/styles/index' as *;
+
+.popup {
+  background-color: white;
+
+  border-radius: 5px;
+  box-shadow: var(--shadow-light);
+
+  &__header {
+    border-bottom: 1px solid var(--clr-grey-2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+  }
+}

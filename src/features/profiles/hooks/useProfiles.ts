@@ -1,11 +1,11 @@
 import React, { useState, useMemo, useCallback } from 'react';
 
 import { getProfiles } from '../api/getProfiles';
-import { ProfilePreviewResponse } from '../types';
+import { ProfilePreviewData } from '../types';
 import { paginate } from '@/utils/pagination';
 
 export const useProfiles = () => {
-  const [profilesData, setData] = useState<ProfilePreviewResponse[][]>([]);
+  const [profilesData, setData] = useState<ProfilePreviewData[][]>([]);
   const [activePageIndex, setActivePageIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);

@@ -6,15 +6,25 @@
   cursor: pointer;
   text-transform: capitalize;
   font-size: var(--font-300);
-
+  font-weight: 400;
   &--primary {
     background-color: var(--clr-blue);
     color: white;
     transition: all 0.2s;
-    font-weight: 500;
 
     &:hover {
       background-color: var(--clr-blue-light);
+    }
+  }
+
+  &--inverse {
+    background-color: transparent;
+    color: var(--clr-blue);
+    transition: all 0.2s;
+    border: 1px solid var(--clr-blue);
+
+    &:hover {
+      background-color: var(--clr-grey-5);
     }
   }
 
@@ -37,5 +47,10 @@
 
   &--lg {
     padding: rem(10) rem(22);
+  }
+
+  &:disabled {
+    background-color: var(--clr-blue-light);
+    color: var(--clr-grey-2);
   }
 }

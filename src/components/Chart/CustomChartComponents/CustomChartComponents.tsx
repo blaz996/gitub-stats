@@ -14,7 +14,6 @@ export const CustomToolTip = ({
   chartType,
 }: CustomToolTipProps) => {
   if (active) {
-    console.log(payload);
     return (
       <div className='chart-tooltip'>
         <p className='chart-tooltip__label'>{`${

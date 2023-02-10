@@ -1,0 +1,26 @@
+@use '../../../../global/styles/index' as *;
+.profile-nav {
+  padding: rem(30) rem(15) 0 rem(15);
+
+  &__links {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px solid var(--clr-grey-4);
+
+    padding-bottom: rem(20);
+  }
+  &__link {
+    font-size: var(--font-600);
+    color: black;
+    text-transform: capitalize;
+    padding-bottom: rem(5);
+
+    &--active {
+      border-bottom: 3px solid var(--clr-blue);
+    }
+
+    &:hover {
+      border-bottom: 3px solid var(--clr-blue);
+    }
+  }
+}

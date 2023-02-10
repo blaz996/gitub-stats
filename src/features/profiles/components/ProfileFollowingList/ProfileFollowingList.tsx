@@ -1,26 +1,35 @@
 import React from 'react';
+
+import { AiFillGithub } from 'react-icons/ai';
+
 import { ProfileHead } from '../ProfileHead';
 import { Button } from '@/components/Elements';
-import { ProfilePreviewResponse } from '../../types';
+import { ProfilePreviewData } from '../../types';
 
 import './ProfileFollowingList.scss';
+import { profile } from 'console';
 
 type ProfileFollowingListProps = {
-  data: ProfilePreviewResponse[];
+  data: ProfilePreviewData[];
   type: 'followers' | 'following';
+  url: string;
 };
 
 export const ProfileFollowingList = ({
   data,
   type,
+  url,
 }: ProfileFollowingListProps) => {
   if (data.length === 0) {
     return (
-      <h3 className='profile-following__list--empty'>
-        {type === 'followers'
-          ? 'This profile has no followers'
-          : 'This profile is not following anyone'}
-      </h3>
+      <div className='profile-following__list profile-following__list--empty '>
+        <h1 className='profile-following__list-title'>{type}</h1>
+        <h3 className='profile-following__list-empty-text'>
+          {type === 'followers'
+            ? 'This profile has no followers'
+            : 'This profile is not following  anyone'}
+        </h3>
+      </div>
     );
   }
 
@@ -28,18 +37,19 @@ export const ProfileFollowingList = ({
     <div className='profile-following__list'>
       <h1 className='profile-following__list-title'>{type}</h1>
       {data.map((profile) => (
-        <div className='profile'>
-          <ProfileHead
-            avatar_url={profile.avatar_url}
-            key={profile.id}
-            userName={profile.login}
-          />
+        <div key={profile.id} className='profile'>
+          <ProfileHead profile={profile} link={true} />
+
           <a className='profile__link' href={profile.html_url}>
-            View on GitHub
+            <AiFillGithub />
           </a>
         </div>
       ))}
-      {data.length === 30 && <Button size={'medium'}>View all{type}</Button>}
+      {data.length === 30 && (
+        <a className='profile-following__view-all' href={`${url}?tab=${type}`}>
+          <Button size={'medium'}>View all {type}</Button>
+        </a>
+      )}
     </div>
   );
 };
