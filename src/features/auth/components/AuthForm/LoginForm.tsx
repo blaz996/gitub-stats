@@ -64,7 +64,7 @@ export const LoginForm = ({
                 Login
               </Button>
               <p className='login-form__link'>
-                Dont have an account? <Link to='/register'>Sign up</Link>
+                Dont have an account? <Link to='/signup'>Sign up</Link>
               </p>
             </>
           );
