@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import '@/global/styles/style.scss';
 import { AppProvider } from './providers/app';

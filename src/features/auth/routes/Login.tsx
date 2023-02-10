@@ -22,7 +22,7 @@ export const Login = () => {
   };
   return (
     <ContentLayout>
-      <div className='login'>
+      <div className='signup'>
         <LoginForm onSuccess={onSuccess} />
       </div>
     </ContentLayout>
