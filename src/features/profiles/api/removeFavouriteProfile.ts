@@ -17,7 +17,7 @@ export const useRemoveFavouriteProfile = () => {
         'favouriteProfiles',
         authId,
       ]);
-      console.log(previousFavourites);
+
       queryClient.setQueryData(
         'favouriteProfiles',
         previousFavourites!.filter(

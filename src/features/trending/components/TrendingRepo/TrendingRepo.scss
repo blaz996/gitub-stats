@@ -64,9 +64,6 @@
       font-size: var(--font-400);
       font-weight: 400;
     }
-    &__name {
-      margin: 0;
-    }
   }
 
   &__ranking {
@@ -80,9 +77,9 @@
     justify-content: center;
     align-items: center;
 
-    outline: 4px solid var(--clr-blue);
+    outline: 2px solid var(--clr-blue);
     color: var(--clr-blue);
-    font-weight: 700;
+    font-weight: 500;
     font-size: var(--font-500);
 
     @include breakpoint-down(medium) {
@@ -124,6 +121,12 @@
     letter-spacing: 1px;
     transition: all 0.3s;
     color: var(--clr-grey-1);
+
+    @include breakpoint-down(small) {
+      word-wrap: break-word;
+      text-align: center;
+      max-width: rem(200);
+    }
 
     @include breakpoint-down(mobile) {
       font-size: rem(14);
@@ -178,7 +181,7 @@
     @media (max-width: 50em) {
       position: absolute;
       right: 20px;
-      top: -35px;
+      top: -40px;
     }
 
     @include breakpoint-down(mobile) {

@@ -11,6 +11,15 @@
     gap: rem(5);
 
     color: var(--clr-red);
+
+    .error {
+      &__message {
+        font-size: var(--font-300);
+      }
+      &__icon {
+        font-size: rem(20);
+      }
+    }
   }
 
   &__label {
@@ -21,20 +30,6 @@
     color: var(--clr-grey-1);
 
     transition: all 0.3s;
-  }
-
-  &__error {
-    display: flex;
-    align-items: center;
-
-    .error {
-      &__message {
-        font-size: var(--font-300);
-      }
-      &__icon {
-        font-size: rem(20);
-      }
-    }
   }
 }
 

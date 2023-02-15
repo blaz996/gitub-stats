@@ -25,17 +25,19 @@ export const TrendingHeader = ({
   ...selectProps
 }: TrendingHeaderProps) => {
   return (
-    <div className='trending-header'>
-      <h1 className='trending-header__title'>{title}</h1>
-      {selectEnabled && (
-        <Select
-          disabled={isLoading}
-          defaultOption='javascript'
-          options={selectOptions}
-          label='language'
-          {...selectProps}
-        />
-      )}
+    <div className='trending-header__container'>
+      <div className='trending-header'>
+        <h1 className='trending-header__title'>{title}</h1>
+        {selectEnabled && (
+          <Select
+            disabled={isLoading}
+            defaultOption='javascript'
+            options={selectOptions}
+            label='language'
+            {...selectProps}
+          />
+        )}
+      </div>
     </div>
   );
 };

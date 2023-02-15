@@ -1,6 +1,6 @@
 import React from 'react';
 import { THead } from './THead';
-import { FilterValue } from '@/hooks/useFilter';
+import { SortT } from '@/hooks/useSort';
 
 import './Table.scss';
 export type TableColumn<T> = {
@@ -12,15 +12,15 @@ export type TableColumn<T> = {
 type TableProps<T> = {
   data: T[];
   columns: TableColumn<T>[];
-  activeFilter: FilterValue<T>;
-  toggleActiveFilter: (filter: keyof T) => void;
+  activeSort: SortT<T>;
+  toggleActiveSort: (filter: keyof T) => void;
 };
 
 export const Table = <T extends { id: number }>({
   data,
   columns,
-  activeFilter,
-  toggleActiveFilter,
+  activeSort,
+  toggleActiveSort,
 }: TableProps<T>) => {
   return (
     <div className='table-wrapper'>
@@ -31,8 +31,8 @@ export const Table = <T extends { id: number }>({
               <THead<T>
                 key={i}
                 value={col}
-                activeFilterField={activeFilter}
-                toggleActiveFilter={toggleActiveFilter}
+                activeSort={activeSort}
+                toggleActiveSort={toggleActiveSort}
               />
             ))}
           </tr>
@@ -41,7 +41,7 @@ export const Table = <T extends { id: number }>({
           {data.map((entry, i) => (
             <tr key={entry?.id || i}>
               {columns.map(({ field, icon, atribute }, i) => (
-                <td data-label={columns[i].atribute} key={i}>
+                <td data-label={atribute} key={i}>
                   {entry[field] as React.ReactNode}
                 </td>
               ))}

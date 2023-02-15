@@ -1,38 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { SetState } from '@/types';
 
+import { getPaginationUpStep, getPaginationDownStep } from '@/utils/pagination';
 import { generateRange } from '@/utils/generateRange';
-
-const getPaginationDownStep = (
-  activePageIndex: number,
-  step: number = 2
-): any => {
-  if (step === 0) {
-    return null;
-  }
-
-  if (activePageIndex - step < 0) {
-    return getPaginationDownStep(activePageIndex, step - 1);
-  } else {
-    return step;
-  }
-};
-
-const getPaginationUpStep = <T>(
-  activePageIndex: number,
-  data: T[][],
-  step: number = 3
-): any => {
-  if (step === 0) {
-    return null;
-  }
-
-  if (activePageIndex + step >= data.length) {
-    return getPaginationUpStep(activePageIndex, data, step - 1);
-  } else {
-    return step;
-  }
-};
 
 export const usePagination = <T>(
   activePageIndex: number,
@@ -45,7 +15,7 @@ export const usePagination = <T>(
     setPaginationArr(updatePaginationArr());
   }, [activePageIndex, data]);
 
-  const updatePaginationArr = () => {
+  const updatePaginationArr = useCallback(() => {
     const currPaginationIndex = activePageIndex + 1;
     const paginationStepDown = getPaginationDownStep(activePageIndex);
     const paginationStepUp = getPaginationUpStep<T>(activePageIndex, data);
@@ -71,36 +41,39 @@ export const usePagination = <T>(
       ];
     }
     return result;
-  };
+  }, [activePageIndex, data]);
 
-  const nextPage = (step: number) => {
-    console.log('called');
-    const paginationStepUp = getPaginationUpStep<T>(
-      activePageIndex,
-      data,
-      step
-    );
-    if (paginationStepUp) {
-      updateActivePageIndex(
-        (oldIndex: number) =>
-          oldIndex + (step > paginationStepUp ? paginationStepUp : step)
+  const nextPage = useCallback(
+    (step: number) => {
+      const paginationStepUp = getPaginationUpStep<T>(
+        activePageIndex,
+        data,
+        step
       );
-    }
-  };
+      if (paginationStepUp) {
+        updateActivePageIndex(
+          (oldIndex: number) =>
+            oldIndex + (step > paginationStepUp ? paginationStepUp : step)
+        );
+      }
+    },
+    [activePageIndex, data]
+  );
 
-  const previousPage = (step: number) => {
-    console.log('called');
-    const paginationStepDown = getPaginationDownStep(activePageIndex, step);
-    if (paginationStepDown) {
-      updateActivePageIndex(
-        (oldIndex: number) =>
-          oldIndex - (step > paginationStepDown ? paginationStepDown : step)
-      );
-    }
-  };
+  const previousPage = useCallback(
+    (step: number) => {
+      const paginationStepDown = getPaginationDownStep(activePageIndex, step);
+      if (paginationStepDown) {
+        updateActivePageIndex(
+          (oldIndex: number) =>
+            oldIndex - (step > paginationStepDown ? paginationStepDown : step)
+        );
+      }
+    },
+    [activePageIndex, data]
+  );
 
   const changePage = useCallback((num: number) => {
-    console.log('called');
     updateActivePageIndex(num);
   }, []);
 

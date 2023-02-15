@@ -3,7 +3,6 @@ export const getRepoStatTotal = (
   repos: RepoData[],
   repoStat: 'stargazers_count' | 'forks'
 ) => {
-  console.log('called');
   return repos.reduce((acc, repo) => (acc += repo[repoStat]), 0);
 };
 
@@ -13,7 +12,6 @@ export type ChartStat = {
 };
 
 export const getReposPerLanguage = (repos: RepoData[]) => {
-  console.log('called');
   return repos.reduce((acc, currRepo) => {
     const currLanguage = currRepo['language'];
     if (currLanguage === 'Unknown') return acc;
@@ -27,7 +25,6 @@ export const getRepoStatsPerLanguage = (
   repos: RepoData[],
   repoStat: 'stargazers_count' | 'forks'
 ) => {
-  console.log('called');
   return repos.reduce((acc, currRepo) => {
     const currLanguage = currRepo.language;
     const currStat = currRepo[repoStat] as number;
@@ -42,7 +39,7 @@ export const formatDataForChart = (
   stats: {
     [key: string]: number;
   },
-  sortByLabel: boolean = false
+  sortByYear: boolean = false
 ): ChartStat[] => {
   const result = [];
   for (let key in stats) {
@@ -51,10 +48,12 @@ export const formatDataForChart = (
     statObj.value = stats[key];
     result.push(statObj);
   }
-  if (sortByLabel) {
+  if (sortByYear) {
     return result.sort((a, b) => Number(a.label) - Number(b.label));
   }
-  return result.sort((a, b) => b.value - a.value);
+  return result
+    .sort((a, b) => b.value - a.value)
+    .filter((stat) => stat.value !== 0);
 };
 export const getProfileActivityPerYear = (repos: RepoData[]) => {
   return repos.reduce((acc, currRepo) => {

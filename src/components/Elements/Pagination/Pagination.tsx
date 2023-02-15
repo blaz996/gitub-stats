@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { usePagination } from '@/hooks/usePagination';
 import {
   ChevronLeftIcon,
@@ -7,8 +7,6 @@ import {
   ChevronDoubleRightIcon,
 } from '@heroicons/react/24/solid';
 
-import { navigatePagination } from '@/utils/pagination';
-import { generateRange } from '@/utils/generateRange';
 import { SetState } from '@/types';
 
 import './Pagination.scss';
@@ -31,7 +29,7 @@ export const Pagination = <T,>({
   );
 
   if (data.length === 0) {
-    return <></>;
+    return null;
   }
 
   return (

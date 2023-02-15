@@ -7,38 +7,32 @@ import {
   Bar,
   Cell,
   Tooltip,
+  Legend,
 } from 'recharts';
 
 import { chartDefaultColors } from '../ChartWrapper/ChartWrapper';
 import { ChartWrapper } from '../ChartWrapper/ChartWrapper';
-import { ChartWrapperProps } from '../types';
+import { ChartProps } from '../types';
 import { CustomToolTip } from '../CustomChartComponents/CustomChartComponents';
 
-type BarChartProps<T> = {
-  chartWidth?: number;
-  chartHeight?: number;
-  data: T[];
-} & Omit<ChartWrapperProps, 'children'>;
-
 export const BarChart = <T,>({
-  chartWidth: width,
-  chartHeight: height,
   data,
   wrapperHeight,
   wrapperWidth,
   chartTitle,
   className,
-}: BarChartProps<T>) => {
+}: ChartProps<T>) => {
   return (
     <ChartWrapper
+      chartData={data}
       wrapperWidth={wrapperWidth}
       wrapperHeight={wrapperHeight}
       chartTitle={chartTitle}
       className={className}
     >
-      <Chart data={data} width={width} height={height} barCategoryGap='20%'>
-        <XAxis dataKey='label' interval={0} fontSize={10} />
-        <YAxis scale='sqrt' />
+      <Chart data={data} barCategoryGap='20%'>
+        <XAxis dataKey='label' fontSize={10} />
+        <YAxis scale='sqrt' fontSize={12} />
         <Tooltip
           cursor={{ fill: 'transparent' }}
           content={<CustomToolTip chartType='bar' />}

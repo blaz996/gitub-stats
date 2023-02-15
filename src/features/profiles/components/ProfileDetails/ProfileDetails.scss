@@ -3,13 +3,10 @@
   display: grid;
   max-width: rem(1100);
   margin-inline: auto;
-
   grid-template-areas:
     'info atributes  atributes'
     'info following   following';
-
   grid-template-columns: 1fr 2fr;
-
   gap: rem(40);
 
   @include breakpoint-down(medium) {
@@ -38,12 +35,9 @@
 .profile-atributes {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: rem(20);
-
+  column-gap: rem(40);
   width: 100%;
-
   transition: all 0.4s;
-
   grid-area: atributes;
 
   @include breakpoint-down(medium) {
@@ -58,7 +52,6 @@
   @include breakpoint-down(mobile) {
     grid-template-columns: 1fr;
   }
-
   &__col {
     gap: rem(20);
 
@@ -69,10 +62,10 @@
     }
 
     @include breakpoint-down(small) {
-      grid-template-columns: repeat(auto-fit, minmax(rem(120), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(rem(140), 1fr));
     }
     @include breakpoint-down(mobile) {
-      grid-template-columns: repeat(auto-fit, minmax(rem(140), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(rem(150), 1fr));
     }
   }
 }

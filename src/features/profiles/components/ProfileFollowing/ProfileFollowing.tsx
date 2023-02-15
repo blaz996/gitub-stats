@@ -2,7 +2,6 @@ import React from 'react';
 
 import { ProfileFollowingList } from '../ProfileFollowingList';
 import { ProfileData } from '../../types';
-import { useProfile } from '../../hooks/useProfile';
 
 import './ProfileFollowing.scss';
 

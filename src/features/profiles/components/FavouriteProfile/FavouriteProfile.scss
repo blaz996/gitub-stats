@@ -20,6 +20,9 @@
 
     svg {
       width: rem(20);
+      @include breakpoint-down(small) {
+        width: rem(15);
+      }
     }
   }
 }

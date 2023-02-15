@@ -13,9 +13,9 @@ export const PieChart = <T,>({
   chartTitle,
   className,
 }: ChartProps<T>) => {
-  console.log(data);
   return (
     <ChartWrapper
+      chartData={data}
       wrapperWidth={wrapperWidth}
       wrapperHeight={wrapperHeight}
       chartTitle={chartTitle}

@@ -1,12 +1,7 @@
 import { Route, Routes, useParams } from 'react-router-dom';
 
-import { lazyImport } from '@/utils/lazyImport';
 import { useProfile } from '../hooks/useProfile';
-/*
-import { useProfileRepos } from '../hooks/useProfile';
-import { useProfileFollowers } from '../hooks/useProfile';
-import { useProfileFollowing } from '../hooks/useProfile';
-*/
+
 import { ProfileNav } from '../components/ProfileNav';
 import { Spinner } from '@/components/Elements';
 import { ProfileData, RepoData } from '../types';

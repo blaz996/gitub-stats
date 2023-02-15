@@ -11,6 +11,12 @@
   right: rem(75);
   z-index: 20;
 
+  @include breakpoint-down(mobile) {
+    right: rem(10);
+    top: rem(50);
+    width: rem(200);
+  }
+
   &__header {
     .user-icon {
       width: rem(50);
@@ -40,6 +46,12 @@
       &:hover {
         background-color: var(--clr-grey-5);
       }
+    }
+  }
+
+  .nav__link {
+    @include breakpoint-down(mobile) {
+      gap: rem(20);
     }
   }
 }

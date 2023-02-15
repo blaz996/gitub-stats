@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { AiFillGithub } from 'react-icons/ai';
 
 import { ProfileHead } from '../ProfileHead';
@@ -7,7 +6,6 @@ import { Button } from '@/components/Elements';
 import { ProfilePreviewData } from '../../types';
 
 import './ProfileFollowingList.scss';
-import { profile } from 'console';
 
 type ProfileFollowingListProps = {
   data: ProfilePreviewData[];
@@ -36,15 +34,17 @@ export const ProfileFollowingList = ({
   return (
     <div className='profile-following__list'>
       <h1 className='profile-following__list-title'>{type}</h1>
-      {data.map((profile) => (
-        <div key={profile.id} className='profile'>
-          <ProfileHead profile={profile} link={true} />
+      <div className='profile-following__list-profiles'>
+        {data.map((profile) => (
+          <div key={profile.id} className='profile'>
+            <ProfileHead profile={profile} link={true} />
 
-          <a className='profile__link' href={profile.html_url}>
-            <AiFillGithub />
-          </a>
-        </div>
-      ))}
+            <a className='profile__link' href={profile.html_url}>
+              <AiFillGithub />
+            </a>
+          </div>
+        ))}
+      </div>
       {data.length === 30 && (
         <a className='profile-following__view-all' href={`${url}?tab=${type}`}>
           <Button size={'medium'}>View all {type}</Button>

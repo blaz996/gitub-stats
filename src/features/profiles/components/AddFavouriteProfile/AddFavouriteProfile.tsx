@@ -1,11 +1,13 @@
 import React from 'react';
 import { IoMdCheckmarkCircle } from 'react-icons/io';
+import { FaStar } from 'react-icons/fa';
 
 import { User } from 'firebase/auth';
 import { useFavouriteProfiles } from '../../hooks/useFavouriteProfiles';
 import { useAddFavouriteProfile } from '../../api/addFavouriteProfile';
-import { FaStar } from 'react-icons/fa';
 import { ProfileData } from '../../types';
+
+import { Spinner } from '@/components/Elements';
 
 import './AddFavouriteProfile.scss';
 
@@ -24,7 +26,11 @@ export const AddFavouriteProfile = ({
   const { mutateAsync, isIdle } = useAddFavouriteProfile();
 
   if (isLoading) {
-    return null;
+    return (
+      <div className='profile__favourite-btn--loading'>
+        <Spinner size='small' />
+      </div>
+    );
   }
 
   if (favouriteProfiles?.some((favProfile) => favProfile.id === profile.id)) {

@@ -17,7 +17,11 @@ export const ContentLayout = ({
 }: ContainerProps) => {
   return (
     <div className={`layout ${className} layout--${bgColor}`}>
-      {header && <h1 className='layout__header'>{header}</h1>}
+      {header && (
+        <div className='layout__header'>
+          <h1 className='layout__header-title'>{header}</h1>
+        </div>
+      )}
       {children}
     </div>
   );

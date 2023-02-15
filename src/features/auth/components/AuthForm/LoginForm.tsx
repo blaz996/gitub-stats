@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import z from 'zod';
 import { Link } from 'react-router-dom';
 
-import { handleLogInErrors } from '@/lib/firebase/authErrors';
 import { Form } from '@/components/Form';
 import { InputField } from '@/components/Form';
 import { Button } from '@/components/Elements';
-import { logInWithEmailAndPassword } from '@/lib/firebase/auth';
 
 import './AuthForm.scss';
 
@@ -25,12 +23,12 @@ export const LoginForm = ({
 }: {
   onSuccess: (...args: any) => void;
 }) => {
-  const [loginError, setLoginError] = useState('');
+  const [loginFormError, setLoginFormError] = useState('');
   const [isSubmiting, setIsSubmiting] = useState(false);
   const handleSubmit = async (values: LoginFormValues) => {
     setIsSubmiting(true);
-    setLoginError('');
-    await onSuccess(values['email'], values['password'], setLoginError);
+    setLoginFormError('');
+    await onSuccess(values['email'], values['password'], setLoginFormError);
     setIsSubmiting(false);
   };
 
@@ -41,7 +39,7 @@ export const LoginForm = ({
         options={{ mode: 'onBlur' }}
         schema={schema}
         formTitle='login'
-        formError={loginError}
+        formError={loginFormError}
       >
         {({ register, formState }) => {
           return (

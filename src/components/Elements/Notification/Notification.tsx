@@ -3,8 +3,9 @@ import { XMarkIcon } from '@heroicons/react/24/solid';
 import { animated } from 'react-spring';
 
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
-import { usePopInAnimation } from '@/hooks/useAnimation';
 import { hideNotification } from '@/store/notification/notificationSlice';
+
+import { usePopInAnimation } from '@/hooks/useAnimation';
 
 import './Notification.scss';
 

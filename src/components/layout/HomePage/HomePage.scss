@@ -42,20 +42,21 @@
 
     &-icon {
       font-size: rem(160);
-
       color: white;
+
       @include breakpoint-down(medium) {
         font-size: rem(120);
       }
-      @include breakpoint-down(small) {
-        position: absolute;
-        top: 0;
-        font-size: rem(100);
-      }
+
       @include breakpoint-down(small) {
         position: absolute;
         top: 5%;
         font-size: rem(60);
+
+        &--center {
+          left: 50%;
+          transform: translate(-50%);
+        }
       }
     }
 
@@ -70,7 +71,12 @@
       letter-spacing: 1.6px;
       font-weight: 500;
       text-transform: uppercase;
+      text-align: center;
       margin-bottom: rem(10);
+
+      @include breakpoint-down(small) {
+        margin-bottom: rem(20);
+      }
     }
 
     &-subtext {

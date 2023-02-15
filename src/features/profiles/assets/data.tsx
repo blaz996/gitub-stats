@@ -14,7 +14,7 @@ import { FaStar } from 'react-icons/fa';
 import { ProfileData, RepoData } from '../types';
 import { ATRIBUTE_CARD_COLORS } from '@/components/Elements/Card';
 import { TableColumn } from '@/components/Elements';
-import { FilterValue } from '@/hooks/useFilter';
+import { SortT } from '@/hooks/useSort';
 
 type ProfileAtributeData = {
   color: keyof typeof ATRIBUTE_CARD_COLORS;
@@ -71,26 +71,26 @@ export const REPO_TABLE_COLUMNS_DATA: TableColumn<RepoData>[] = [
   { field: 'language', icon: <SiJavascript />, atribute: 'Language' },
 ];
 
-export const REPO_SELECT_FILTERS: {
-  filter: FilterValue<RepoData>;
+export const REPO_SELECT_SORT_VALUES: {
+  sort: SortT<RepoData>;
   label: string;
 }[] = [
   {
     label: 'Name',
-    filter: { filterValue: 'name', ascending: true },
+    sort: { value: 'name', ascending: true },
   },
 
   {
     label: 'Language',
-    filter: { filterValue: 'language', ascending: true },
+    sort: { value: 'language', ascending: true },
   },
   {
     label: 'Stars',
-    filter: { filterValue: 'stargazers_count', ascending: true },
+    sort: { value: 'stargazers_count', ascending: true },
   },
 
   {
     label: 'Forks',
-    filter: { filterValue: 'forks', ascending: true },
+    sort: { value: 'forks', ascending: true },
   },
 ];

@@ -11,13 +11,12 @@
   &__buttons {
     position: absolute;
     bottom: rem(5);
-    gap: rem(10);
-
-    height: 100%;
-    width: 100%;
     display: flex;
     align-items: flex-end;
     justify-content: end;
+    gap: rem(10);
+    height: 100%;
+    width: 100%;
 
     @include breakpoint-down(small) {
       position: relative;

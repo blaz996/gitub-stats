@@ -6,8 +6,9 @@
   margin-inline: auto;
   margin-top: rem(10);
 
-  &--input {
+  &__input {
     padding-inline: rem(15);
+    max-width: 100%;
     border-radius: 20px;
     height: rem(50);
     border: none;
@@ -18,32 +19,32 @@
     position: relative;
   }
 
-  .input {
-    max-width: 100%;
-  }
-
   &__button {
     outline: none;
     position: absolute;
     cursor: pointer;
     top: rem(10);
-    right: 2%;
+    right: rem(10);
     border-radius: 50%;
     display: flex;
-    width: rem(30);
-    font-size: rem(20);
-    font-weight: 600;
     align-items: center;
     justify-content: center;
+    width: rem(30);
     height: rem(30);
+    font-size: rem(20);
+    font-weight: 600;
     border: 0;
     background-color: var(--clr-blue-light);
     color: white;
+
+    &--loading {
+      margin-right: rem(30);
+    }
   }
 
   .spinner {
-    right: 2%;
+    right: rem(5);
     left: auto;
-    top: 25%;
+    top: rem(12);
   }
 }

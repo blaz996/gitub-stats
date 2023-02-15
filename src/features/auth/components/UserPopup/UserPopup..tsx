@@ -19,11 +19,13 @@ type UserPopupProps = {
 export const UserPopup = forwardRef<HTMLDivElement, UserPopupProps>(
   ({ closePopup }, ref) => {
     const { currentUser } = useAuth();
+    const navigate = useNavigate();
 
     const handleLogout = () => {
       logOutUser();
+      closePopup();
+      navigate('/');
     };
-    const navigate = useNavigate();
 
     return (
       <div className='user-popup' ref={ref}>
@@ -43,8 +45,6 @@ export const UserPopup = forwardRef<HTMLDivElement, UserPopupProps>(
             <NavLink
               handleClick={() => {
                 handleLogout();
-                closePopup();
-                navigate('/');
               }}
               link='logout'
               icon={<BiLogOut />}

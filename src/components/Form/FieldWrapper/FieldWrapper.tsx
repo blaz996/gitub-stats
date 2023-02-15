@@ -21,10 +21,8 @@ export type FieldWrappersPassThroughProps = Omit<
 export const FieldWrapper = ({
   label,
   className = '',
-
   error,
   children,
-  description,
 }: FieldWrapperProps) => {
   return (
     <div className={`field-wrapper ${className}`}>

@@ -21,10 +21,6 @@
     background-color: var(--clr-blue-light);
   }
 
-  @include breakpoint-down(medium) {
-    left: rem(20);
-    right: auto;
-  }
   @include breakpoint-down(small) {
     left: auto;
 
@@ -38,5 +34,13 @@
       background-color: var(--clr-blue);
     }
     cursor: auto;
+  }
+
+  &--loading {
+    .spinner {
+      left: auto;
+      top: rem(15);
+      right: rem(15);
+    }
   }
 }

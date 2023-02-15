@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
-
 import { User } from 'firebase/auth';
 
 import { navLinks } from '../NavBar';

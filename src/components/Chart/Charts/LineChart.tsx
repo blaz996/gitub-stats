@@ -4,22 +4,12 @@ import {
   CartesianGrid,
   XAxis,
   YAxis,
-  Bar,
-  Cell,
   Line,
   Tooltip,
 } from 'recharts';
 
-import { chartDefaultColors } from '../ChartWrapper/ChartWrapper';
 import { ChartWrapper } from '../ChartWrapper/ChartWrapper';
-import { ChartWrapperProps } from '../types';
-import { CustomToolTip } from '../CustomChartComponents/CustomChartComponents';
-
-type LineChartProps<T> = {
-  chartWidth?: number;
-  chartHeight?: number;
-  data: T[];
-} & Omit<ChartWrapperProps, 'children'>;
+import { ChartProps } from '../types';
 
 export const LineChart = <T,>({
   data,
@@ -27,18 +17,18 @@ export const LineChart = <T,>({
   wrapperWidth,
   chartTitle,
   className,
-}: LineChartProps<T>) => {
-  console.log(data);
+}: ChartProps<T>) => {
   return (
     <ChartWrapper
+      chartData={data}
       wrapperWidth={wrapperWidth}
       wrapperHeight={wrapperHeight}
       chartTitle={chartTitle}
       className={className}
     >
       <Chart data={data}>
-        <XAxis dataKey='label' />
-        <YAxis />
+        <XAxis dataKey='label' fontSize={10} />
+        <YAxis fontSize={12} />
         <Tooltip cursor={{ fill: 'transparent' }} />
         <CartesianGrid horizontal={false} vertical={false} />
         <Line dataKey='value' cursor='pointer' />

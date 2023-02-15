@@ -3,9 +3,10 @@ export type ChartWrapperProps = {
   wrapperHeight?: number;
   chartTitle?: string;
   className?: string;
+  chartData: any[];
   children: any;
 };
 
 export type ChartProps<T> = {
   data: T[];
-} & Omit<ChartWrapperProps, 'children'>;
+} & Omit<ChartWrapperProps, 'children' | 'chartData'>;

@@ -14,6 +14,8 @@
     color: black;
     text-transform: capitalize;
     padding-bottom: rem(5);
+    border-bottom: 3px solid transparent;
+    transition: 0.2s;
 
     &--active {
       border-bottom: 3px solid var(--clr-blue);

@@ -9,16 +9,6 @@ import { formatDate } from '@/utils/date';
 
 import './TrendingRepo.scss';
 
-/*
-
-<div className='trending-repo__stars'>
-        <div className='trending-repo__icon-wrapper'>
-          <FaStar className='trending-repo__icon-star' />
-        </div>
-        <p className='trending-repo__stars-value'>{stargazers_count}</p>
-      </div>
-      */
-
 export type TrendingRepoProps = {
   name: string;
   owner: ProfilePreviewData;

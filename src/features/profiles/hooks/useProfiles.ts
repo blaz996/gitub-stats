@@ -5,7 +5,7 @@ import { ProfilePreviewData } from '../types';
 import { paginate } from '@/utils/pagination';
 
 export const useProfiles = () => {
-  const [profilesData, setData] = useState<ProfilePreviewData[][]>([]);
+  const [profilesData, setProfilesData] = useState<ProfilePreviewData[][]>([]);
   const [activePageIndex, setActivePageIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -15,11 +15,10 @@ export const useProfiles = () => {
     setIsLoading(true);
     try {
       const fetchedProfiles = await getProfiles(searchedProfile);
-      setData(paginate(fetchedProfiles));
+      setProfilesData(paginate(fetchedProfiles));
       setIsSuccess(true);
     } catch (err) {
       setIsSuccess(false);
-      console.log(err);
     } finally {
       setIsLoading(false);
     }

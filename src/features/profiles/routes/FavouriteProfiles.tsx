@@ -17,7 +17,7 @@ export const FavouriteProfiles = () => {
   } = useFavouriteProfiles(currentUser!.uid);
 
   if (isLoading) {
-    return <Spinner />;
+    return <Spinner size='large' />;
   }
 
   if (!favouriteProfiles) {
@@ -27,8 +27,8 @@ export const FavouriteProfiles = () => {
   return (
     <ContentLayout bgColor='grey'>
       <div className='favourite-profiles'>
-        <h1 className='layout-title'>Favourite Profiles</h1>
         <ProfilesList
+          listTitle='favourite profiles'
           listLength={favouriteProfiles!.length}
           emptyListMsg='No favourite profiles'
           listFetched={isSuccess}

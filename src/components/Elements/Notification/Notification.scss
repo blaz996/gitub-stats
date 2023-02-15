@@ -6,7 +6,7 @@
 
     z-index: 20;
   }
-  min-width: rem(280);
+  width: min(rem(280), 75vw);
   background-color: white;
 
   box-shadow: var(--shadow-light);

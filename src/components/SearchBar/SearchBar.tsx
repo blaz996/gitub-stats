@@ -23,16 +23,6 @@ export const SearchBar = ({
 }: SearchBarProps) => {
   const schema = z.object({
     searchValue: z.string().min(1, 'Please enter a username'),
-    /*
-      .superRefine((val, ctx) => {
-        if (isEmpty) {
-          ctx.addIssue({
-            code: z.ZodIssueCode.custom,
-            message: 'Fuck you',
-          });
-        }
-      }),
-      */
   });
 
   return (
@@ -52,12 +42,13 @@ export const SearchBar = ({
                 registration={register('searchValue', {
                   onChange: (e) => updateSearchValue(e.target.value),
                 })}
-                className='search-bar--input'
+                className='search-bar__input'
               />
               <button
                 type='submit'
-                className='search-bar__button'
-                style={{ right: isLoading ? '8%' : '2%' }}
+                className={`search-bar__button ${
+                  isLoading ? 'search-bar__button--loading' : ''
+                }`}
               >
                 <AiOutlineSearch />
               </button>

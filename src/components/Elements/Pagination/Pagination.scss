@@ -3,13 +3,9 @@
   display: flex;
   gap: rem(10);
 
-  @include breakpoint-down(mobile) {
-    gap: 0;
-  }
-
   &__container {
     position: absolute;
-    bottom: 2%;
+    bottom: rem(20);
     width: 100%;
     left: 0;
     right: 0;
@@ -22,10 +18,8 @@
     display: flex;
     gap: rem(10);
 
-    @include breakpoint-down(mobile) {
-      .pagination__btn {
-        width: rem(27);
-      }
+    @include breakpoint-down(small) {
+      gap: rem(5);
     }
   }
   button {
@@ -35,6 +29,9 @@
     outline: none;
     transition: all 0.2s;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover {
       background-color: var(--clr-blue);
@@ -42,6 +39,11 @@
       svg {
         color: white;
       }
+    }
+
+    @include breakpoint-down(small) {
+      padding: rem(6);
+      width: rem(30);
     }
   }
 
@@ -59,12 +61,7 @@
 
       width: rem(40);
 
-      @include breakpoint-down(small) {
-        width: rem(40);
-      }
       @include breakpoint-down(mobile) {
-        width: rem(35);
-
         &--left:first-child,
         &--right:last-child {
           display: none;
@@ -73,7 +70,8 @@
     }
     &__icon {
       width: rem(18);
-      color: black;
+
+      color: var(--clr-grey-1);
     }
   }
   .active {

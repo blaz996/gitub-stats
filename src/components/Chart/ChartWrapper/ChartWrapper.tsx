@@ -16,6 +16,7 @@ export const chartDefaultColors = [
 
 export const ChartWrapper = ({
   wrapperHeight: height = 300,
+  chartData,
   className = '',
   chartTitle,
   children,
@@ -24,7 +25,11 @@ export const ChartWrapper = ({
     <div className={`chart-wrapper ${className}`}>
       <h1 className='chart-title'>{chartTitle}</h1>
       <ResponsiveContainer width={'99%'} height={height}>
-        {children}
+        {chartData.length === 0 ? (
+          <h2 className='chart--empty'>No Dvata Available</h2>
+        ) : (
+          children
+        )}
       </ResponsiveContainer>
     </div>
   );

@@ -9,8 +9,8 @@ export const getProfiles = async (
   userName: string
 ): Promise<ProfilePreviewData[]> => {
   const { items } = await axios.get<never, ResponseData>(
-    `search/users?q=${userName}&per_page=${100}`
+    `search/users?q=${userName}&per_page=${100}&sort=followers`
   );
-  console.log(items);
+
   return items;
 };

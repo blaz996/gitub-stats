@@ -14,7 +14,13 @@ export const ProfileHead = ({ profile, link = false }: ProfileHeadProps) => {
   return (
     <div className='profile-head'>
       <div className='profile-head__avatar-wrapper'>
-        <img src={avatar_url} className='profile-head__avatar' />
+        {link ? (
+          <Link to={`/profiles/${login}`}>
+            <img src={avatar_url} className='profile-head__avatar' />
+          </Link>
+        ) : (
+          <img src={avatar_url} className='profile-head__avatar' />
+        )}
       </div>
       {link ? (
         <Link

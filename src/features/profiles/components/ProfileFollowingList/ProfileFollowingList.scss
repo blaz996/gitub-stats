@@ -6,7 +6,7 @@
 
   border-radius: 5px;
   padding: rem(10) rem(30);
-  max-height: rem(327);
+  height: rem(335);
   overflow-y: auto;
 
   box-shadow: var(--shadow-light);
@@ -28,16 +28,16 @@
     padding: rem(7);
   }
 
+  &-profiles {
+    margin-bottom: rem(25);
+  }
+
   .profile {
     padding-top: rem(10);
     display: flex;
     gap: rem(20);
     font-size: var(--font-300);
     align-items: center;
-
-    &:last-child {
-      margin-bottom: rem(20);
-    }
 
     &-head {
       flex-direction: row;
@@ -55,10 +55,11 @@
       &__username {
         font-size: var(--font-300);
         font-weight: 300;
+        word-wrap: break-word;
+        max-width: rem(160);
 
         @include breakpoint-down(medium) {
           max-width: rem(100);
-          word-wrap: break-word;
         }
       }
     }
@@ -91,10 +92,14 @@
       left: 50%;
       transform: translate(-50%);
       color: var(--clr-grey-1);
+      text-align: center;
     }
   }
 }
 
 .profile-following__view-all {
-  align-self: center;
+  display: flex;
+  .btn {
+    flex: 1;
+  }
 }

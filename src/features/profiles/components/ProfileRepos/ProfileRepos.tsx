@@ -5,64 +5,65 @@ import {
   ArrowSmallDownIcon,
 } from '@heroicons/react/24/solid';
 
-import { FilterValue, useFilter } from '@/hooks/useFilter';
+import { SortT, useSort } from '@/hooks/useSort';
 import { useDisclosure } from '@/hooks/useDisclosure';
-import { Table } from '@/components/Elements/Table/Table';
+
+import { Modal, SortList, Table } from '@/components/Elements';
 import { ContentLayout } from '@/components/layout';
 import { RepoData } from '../../types';
-import { Modal } from '@/components/Elements';
-import { FilterList } from '@/components/Elements';
-import { REPO_TABLE_COLUMNS_DATA } from '../../assets/data';
-import { REPO_SELECT_FILTERS } from '../../assets/data';
+
+import {
+  REPO_TABLE_COLUMNS_DATA,
+  REPO_SELECT_SORT_VALUES,
+} from '../../assets/data';
 
 import './ProfileRepos.scss';
 
 export const ProfileRepos = ({ repos }: { repos: RepoData[] }) => {
-  console.log(repos.length);
   const { isOpen: isModalOpen, close, open } = useDisclosure();
   const {
-    activeFilter,
-    selectFilterValue,
-    toogleFilterValue,
-    filteredData,
-    toggleFilterAscending,
-  } = useFilter<RepoData>(repos.slice(), {
-    filterValue: 'name',
+    activeSort,
+    selectSortValue,
+    toggleSortValue,
+    sortedData,
+    toggleSortAscending,
+  } = useSort<RepoData>(repos.slice(), {
+    value: 'name',
     ascending: true,
   });
 
-  const handleFilterSelect = (filter: FilterValue<RepoData>) => {
-    selectFilterValue(filter);
+  const handleSortSelect = (sort: SortT<RepoData>) => {
+    selectSortValue(sort);
     close();
   };
   return (
     <ContentLayout>
       <div className='profile-repos'>
         <div className='profile-repos__heading'>
-          <div className='profile-repos__heading-filter'>
-            <MdFilterList onClick={open} className='heading-filter__btn' />
-            <span onClick={toggleFilterAscending}>
-              {activeFilter.filterValue}
+          <div className='profile-repos__heading-sort'>
+            <MdFilterList onClick={open} className='heading-sort__btn' />
+            <span className='selection--off ' onClick={toggleSortAscending}>
+              {activeSort.value}
             </span>
-            {activeFilter.ascending ? (
+            {activeSort.ascending ? (
               <ArrowSmallUpIcon />
             ) : (
               <ArrowSmallDownIcon />
             )}
           </div>
         </div>
-        <Modal handleClose={close} show={isModalOpen} modalHeading='Sort by:'>
-          <FilterList
-            activeFilter={activeFilter}
-            updateFilter={handleFilterSelect}
-            filters={REPO_SELECT_FILTERS}
+        <Modal handleClose={close} show={isModalOpen} modalHeading='Filter by:'>
+          <SortList
+            activeSort={activeSort}
+            updateSort={handleSortSelect}
+            sortValues={REPO_SELECT_SORT_VALUES}
           />
         </Modal>
         <Table<RepoData>
           columns={REPO_TABLE_COLUMNS_DATA}
-          data={filteredData}
-          activeFilter={activeFilter}
-          toggleActiveFilter={toogleFilterValue}
+          data={sortedData}
+          activeSort={activeSort}
+          toggleActiveSort={toggleSortValue}
         />
       </div>
     </ContentLayout>

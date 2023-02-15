@@ -8,7 +8,7 @@ import { ProfileHead } from '../ProfileHead';
 import { AddFavouriteProfile } from '../AddFavouriteProfile';
 import { ProfileFollowing } from '../ProfileFollowing/ProfileFollowing';
 import { ProfileData } from '../../types';
-import { Detail } from '@/components/Detail';
+import { Detail } from '@/components/Elements/Detail';
 import { Dropdown } from '@/components/Elements/Dropdown';
 
 import './ProfileInfo.scss';
@@ -25,8 +25,6 @@ export const ProfileInfo = ({
   following,
 }: ProfileInfoProps) => {
   const { currentUser } = useAuth();
-
-  console.log(profile);
 
   const renderProfileDetails = PROFILE_DETAILS_DATA.map((detail) => {
     const profileDetail = detail?.detail;

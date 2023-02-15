@@ -3,11 +3,11 @@
   display: flex;
   align-items: center;
   height: rem(80);
-  flex: 1;
+
   border-radius: 5px;
   color: white;
 
-  padding: 0 rem(15);
+  padding-inline: rem(15);
 
   .atribute {
     &__icon-wrapper {
@@ -33,11 +33,7 @@
         font-size: rem(40);
         width: 80%;
 
-        fill: white;
-        color: white;
         position: relative;
-        opacity: 1;
-        z-index: 2;
 
         @include breakpoint-down(medium) {
           font-size: rem(30);
@@ -49,7 +45,7 @@
       font-weight: 600;
     }
     &__value {
-      font-weight: 700;
+      font-weight: 600;
 
       &-wrapper {
         display: flex;

@@ -9,6 +9,12 @@
 
   grid-area: following;
 
+  @include breakpoint-down(medium) {
+    grid-template-columns: repeat(auto-fit, minmax(rem(100), 1fr));
+    justify-content: center;
+    gap: rem(20);
+  }
+
   @include breakpoint-down(small) {
     display: flex;
     justify-content: center;

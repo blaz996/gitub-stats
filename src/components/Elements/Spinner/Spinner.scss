@@ -2,9 +2,10 @@
 .spinner {
   border-radius: 50%;
   position: absolute;
+  margin-inline: auto;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%);
+  left: 0;
+  right: 0;
 
   &--sm {
     border: 5px solid var(--clr-grey-4);
@@ -27,6 +28,10 @@
 
     width: rem(75);
     height: rem(75);
+    @include breakpoint-down(small) {
+      width: rem(50);
+      height: rem(50);
+    }
   }
 
   animation: loading 1s linear infinite;

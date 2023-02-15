@@ -5,6 +5,7 @@ import { FaSearch, FaUserCheck } from 'react-icons/fa';
 import { ImStatsDots } from 'react-icons/im';
 import { BiTrendingUp } from 'react-icons/bi';
 
+import { useAuth } from '@/features/auth/hooks/useAuth';
 import { Button } from '@/components/Elements';
 import { FeatureCard } from '@/components/Elements/Card/FeatureCard';
 
@@ -26,16 +27,23 @@ const HOME_PAGE_FEATURES = [
 ];
 
 export const HomePage = () => {
+  const { currentUser } = useAuth();
   return (
     <div className='homepage'>
       <div className='homepage__hero'>
-        <div className='homepage__hero-signup'>
-          <Link to='/signup'>
-            <Button>Sign Up</Button>
-          </Link>
-        </div>
+        {!currentUser && (
+          <div className='homepage__hero-signup'>
+            <Link to='/signup'>
+              <Button>Sign Up</Button>
+            </Link>
+          </div>
+        )}
 
-        <div className='homepage__hero-icon'>
+        <div
+          className={`homepage__hero-icon ${
+            currentUser ? 'homepage__hero-icon--center' : ''
+          }`}
+        >
           <AiFillGithub />
         </div>
         <div className='homepage__hero-text'>

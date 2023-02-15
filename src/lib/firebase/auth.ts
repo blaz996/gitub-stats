@@ -13,7 +13,6 @@ import {
 import { app as firebaseApp } from './utils';
 
 export const auth = getAuth(firebaseApp);
-console.log(auth);
 
 export const createAuthUserWithEmailAndPassword = async (
   email: string,

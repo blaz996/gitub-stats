@@ -32,7 +32,6 @@ export const TrendingRepos = () => {
   const [activeLanguage, setActiveLanguage] = useState('javascript');
   const { data: trendingRepos, isLoading } = useTrendingRepos(activeLanguage);
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log('called');
     setActiveLanguage(e.target.value);
   };
   const animatedRepos = useFadeInAnimation<RepoData>(

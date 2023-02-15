@@ -10,11 +10,13 @@
     border-radius: 50%;
     object-fit: cover;
     box-shadow: var(--shadow-light);
+    pointer-events: none;
 
     margin-bottom: rem(10);
 
     @include breakpoint-down(small) {
       width: rem(80);
+      pointer-events: all;
     }
   }
 

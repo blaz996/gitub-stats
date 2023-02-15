@@ -23,6 +23,7 @@ export const SearchProfiles = () => {
     [profilesData, activePageIndex]
   );
 
+  console.log(activePage);
   const handleSubmit = () => {
     searchProfiles(searchValue);
     setActivePageIndex(0);

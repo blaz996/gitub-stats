@@ -16,7 +16,6 @@ export const Login = () => {
     try {
       const response = await logInWithEmailAndPassword(email, password);
     } catch (err: any) {
-      console.log(err.code);
       setLoginError(handleLogInErrors(err.code));
     }
   };

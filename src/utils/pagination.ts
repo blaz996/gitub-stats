@@ -1,11 +1,5 @@
-import { generateRange } from './generateRange';
-
-import { SetState } from '@/types';
-
-import { useCallback } from 'react';
-
 export const paginate = (arr: any[], itemsPerPage: number = 10) => {
-  const pagesNum = arr.length / itemsPerPage;
+  const pagesNum = Math.ceil(arr.length / itemsPerPage);
   const paginatedArr = Array.from({ length: pagesNum }, (_, i) => {
     const start = i * itemsPerPage;
     return arr.slice(start, start + itemsPerPage);
@@ -13,67 +7,33 @@ export const paginate = (arr: any[], itemsPerPage: number = 10) => {
   return paginatedArr;
 };
 
-export const navigatePagination = (
+export const getPaginationDownStep = (
   activePageIndex: number,
-  data: unknown[],
-  updateActivePageIndex: SetState
-) => {
-  const pageUpExists = (step: number = 3): any => {
-    if (step === 0) {
-      return 0;
-    }
-    if (activePageIndex + step > data.length) {
-      return pageUpExists(step - 1);
-    }
-  };
+  step: number = 2
+): any => {
+  if (step === 0) {
+    return null;
+  }
 
-  const pageDownExists = (step: number = 1) =>
-    activePageIndex - step < 0 ? false : true;
+  if (activePageIndex - step < 0) {
+    return getPaginationDownStep(activePageIndex, step - 1);
+  } else {
+    return step;
+  }
+};
 
-  const updatePagination = () => {
-    const currPageIndex = activePageIndex + 1;
-    let result = [currPageIndex];
+export const getPaginationUpStep = <T>(
+  activePageIndex: number,
+  data: T[][],
+  step: number = 3
+): any => {
+  if (step === 0) {
+    return null;
+  }
 
-    if (pageDownExists()) {
-      result = [...generateRange(currPageIndex + 2, currPageIndex), ...result];
-    }
-
-    if (pageUpExists()) {
-      result = [...result, ...generateRange(currPageIndex, currPageIndex + 3)];
-    }
-
-    console.log(result);
-
-    return result.filter((num) => num <= 10 && num > 0);
-  };
-  const nextPage = () => {
-    if (!pageUpExists()) return;
-    updateActivePageIndex((prevActivePage: number) => prevActivePage + 1);
-  };
-  const prevPage = () => {
-    if (!pageDownExists()) return;
-    updateActivePageIndex((prevActivePage: number) => prevActivePage - 1);
-  };
-  const navigateToPage = (index: number) => {
-    updateActivePageIndex(index);
-  };
-  const navigateForwardStep = (step: number = 3) =>
-    pageUpExists(step)
-      ? updateActivePageIndex((prevActivePage: number) => prevActivePage + step)
-      : updateActivePageIndex(data.length - 1);
-
-  const navigateBackwardStep = (step: number = 3) => {
-    pageDownExists(step)
-      ? updateActivePageIndex((prevActivePage: number) => prevActivePage - step)
-      : updateActivePageIndex(0);
-  };
-
-  return {
-    updatePagination,
-    nextPage,
-    prevPage,
-    navigateToPage,
-    navigateForwardStep,
-    navigateBackwardStep,
-  };
+  if (activePageIndex + step >= data.length) {
+    return getPaginationUpStep(activePageIndex, data, step - 1);
+  } else {
+    return step;
+  }
 };

@@ -1,11 +1,8 @@
 import React from 'react';
-import { useQuery } from 'react-query';
 
 import { getRepoStatTotal } from '../../assets/reposStats';
-import {
-  PROFILE_ATRIBUTES_DATA,
-  PROFILE_DETAILS_DATA,
-} from '../../assets/data';
+import { PROFILE_ATRIBUTES_DATA } from '../../assets/data';
+
 import { ContentLayout } from '@/components/layout';
 import { ProfileFollowing } from '../ProfileFollowing/ProfileFollowing';
 import { ProfileInfo } from '../ProfileInfo';
@@ -32,18 +29,6 @@ export const ProfileDetails = ({
     [profile.followers, profile.following],
     [profile.public_repos, profileTotalStars],
   ];
-
-  console.log(profile.public_repos);
-  console.log(profile.following);
-
-  console.log(profileAtributesValues[1][1]);
-
-  /*
-        atributeLabel={profileAtr.label}
-                    atributeValue={profileAtributesValues[i]}
-                    color={profileAtr.color}
-                    icon={profileAtr.icon}
-  */
 
   return (
     <ContentLayout>

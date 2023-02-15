@@ -4,7 +4,7 @@
   &__heading {
     margin-bottom: rem(20);
 
-    &-filter {
+    &-sort {
       display: none;
       font-size: rem(30);
       @include breakpoint-down('small') {
@@ -12,7 +12,7 @@
         align-items: center;
       }
 
-      .heading-filter__btn {
+      .heading-sort__btn {
         width: rem(40);
         cursor: pointer;
       }

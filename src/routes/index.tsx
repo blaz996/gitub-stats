@@ -11,12 +11,6 @@ import { NavBar } from '@/components/layout';
 import { Login } from '@/features/auth/routes/Login';
 import { Register } from '@/features/auth/routes/Register';
 
-/*
-import { SearchProfiles } from '@/features/profile/routes/SearchProfiles';
-import { HomePage } from '@/components/layout/HomePage';
-import { Trending } from '@/features/trending/routes/Trending';
-*/
-
 const { HomePage } = lazyImport(
   () => import('@/components/layout'),
   'HomePage'

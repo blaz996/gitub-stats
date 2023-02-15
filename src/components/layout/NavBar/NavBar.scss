@@ -30,7 +30,7 @@
     }
 
     @include breakpoint-down(mobile) {
-      font-size: var(--font-500);
+      font-size: var(--font-700);
     }
   }
 
@@ -68,9 +68,7 @@
     @include breakpoint-down(mobile) {
       font-size: var(--font-300);
     }
-  }
 
-  .navbar__link {
     @include breakpoint-down(small) {
       display: none;
     }
@@ -106,5 +104,11 @@
     position: absolute;
     top: rem(24);
     right: rem(40);
+
+    @include breakpoint-down(mobile) {
+      right: rem(10);
+      top: rem(28);
+      font-size: rem(25);
+    }
   }
 }

@@ -39,7 +39,7 @@ export const RegisterForm = ({
     setIsSubmiting(true);
     setSignupFormError('');
     if (values['password'] !== values['repeatPassword']) {
-      setSignupFormError('Passwords dont match');
+      setSignupFormError('Passwords do not match');
       return;
     }
     await onSuccess(

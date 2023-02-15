@@ -1,4 +1,8 @@
-export const generateRange = (n1: number, n2: number, inclusive = false) => {
+export const generateRange = (
+  n1: number,
+  n2: number,
+  inclusive: boolean = false
+) => {
   if (n1 > n2) {
     return Array.from(
       { length: n1 - n2 },

@@ -1,14 +1,18 @@
 @use '../../../../global/styles/index' as *;
 .profiles-list {
+  &__container {
+    width: 100%;
+  }
   display: grid;
-  margin-block: rem(70);
+  padding-block: rem(50);
+  margin-bottom: rem(20);
 
-  grid-template-columns: repeat(auto-fit, minmax(rem(220), rem(250)));
+  grid-template-columns: repeat(auto-fit, minmax(rem(210), rem(220)));
   gap: rem(60) rem(40);
   justify-content: center;
 
   @include breakpoint-down('small') {
-    grid-template-columns: repeat(auto-fit, minmax(rem(200), 1rem));
+    grid-template-columns: repeat(auto-fit, minmax(rem(140), 1rem));
     gap: rem(40) rem(20);
     justify-content: space-around;
   }
@@ -23,5 +27,23 @@
     letter-spacing: 2px;
     color: var(--clr-grey-1);
     font-weight: 400;
+    text-align: center;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: var(--font-800);
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    margin-inline: auto;
+    position: relative;
+    border-bottom: 3px solid var(--clr-blue);
+    padding-bottom: rem(10);
+    text-align: center;
   }
 }

@@ -1,11 +1,8 @@
-export const sortFilteredData = <T>(
+export const sortData = <T>(
   data: T[],
   filterValue: keyof T,
   filterAscending: boolean = true
 ) => {
-  console.log(data);
-  console.log(filterValue);
-  console.log(filterAscending);
   return data.sort((valA, valB) => {
     if (typeof valA[filterValue] === 'string') {
       const firstValue = valA[filterValue] as string;

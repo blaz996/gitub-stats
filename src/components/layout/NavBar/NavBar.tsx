@@ -10,11 +10,10 @@ import { useOutsideAlerter } from '@/hooks/useOutsideAlerter';
 import { useDisclosure } from '@/hooks/useDisclosure';
 
 import { NavSidebar } from '../Sidebar/NavSidebar';
-
 import { NavLink } from '../Sidebar';
+import { UserPopup } from '@/features/auth/components';
 
 import './NavBar.scss';
-import { UserPopup } from '@/features/auth/components/UserPopup';
 
 export const navLinks = [
   { icon: <FaHome />, path: '/', link: 'home' },
@@ -27,7 +26,6 @@ export const NavBar = () => {
   const {
     isOpen: isProfilePopupOpen,
     toggle: toggleProfilePopup,
-
     close: closeProfilePopup,
   } = useDisclosure();
 
@@ -57,7 +55,6 @@ export const NavBar = () => {
             <li key={navLink.link}>
               <NavLink
                 key={navLink.link}
-                className='navbar__link'
                 linkPath={navLink.path}
                 link={navLink.link}
               />
@@ -65,7 +62,7 @@ export const NavBar = () => {
           ))}
           {currentUser ? (
             <li ref={popupToggleRef} onClick={toggleProfilePopup}>
-              <CgProfile className='nav__toggle-user' />
+              <CgProfile className='nav__toggle-user selection--off ' />
             </li>
           ) : (
             <li>
