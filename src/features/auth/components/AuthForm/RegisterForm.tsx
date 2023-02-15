@@ -40,6 +40,7 @@ export const RegisterForm = ({
     setSignupFormError('');
     if (values['password'] !== values['repeatPassword']) {
       setSignupFormError('Passwords do not match');
+      setIsSubmiting(false);
       return;
     }
     await onSuccess(
