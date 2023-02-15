@@ -26,7 +26,7 @@ export const ChartWrapper = ({
       <h1 className='chart-title'>{chartTitle}</h1>
       <ResponsiveContainer width={'99%'} height={height}>
         {chartData.length === 0 ? (
-          <h2 className='chart--empty'>No Dvata Available</h2>
+          <h2 className='chart--empty'>No Data Available</h2>
         ) : (
           children
         )}
